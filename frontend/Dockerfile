@@ -1,34 +1,48 @@
-# Base image
+# ==========================================
+# 1. Base Image
+# ==========================================
 FROM node:20-alpine AS base
 
-# Step 1: Install dependencies
+# ==========================================
+# 2. Dependencies Stage
+# ==========================================
 FROM base AS deps
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
+
+# Copy lock files and install dependencies
 COPY package.json package-lock.json ./
 RUN npm ci
 
-# Step 2: Rebuild source code
+# ==========================================
+# 3. Builder Stage
+# ==========================================
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+
+# Disable telemetry during build
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
-# Step 3: Production runner
+# ==========================================
+# 4. Production Runner Stage (Lightweight Image)
+# ==========================================
 FROM base AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# Create non-root user for security
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
+# Copy static assets and standalone Next.js server
 COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
 
@@ -36,4 +50,5 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-CMD ["npm", "start"]
+# Run standalone Node server
+CMD ["node", "server.js"]
