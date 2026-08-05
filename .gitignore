@@ -1,0 +1,19 @@
+# Dependencies & Build artifacts
+**/node_modules/
+**/.next/
+**/build/
+**/out/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Environment & Config
+.env
+.env.local
+.env.*.local
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
