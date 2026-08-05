@@ -8,6 +8,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    image: ghcr.io/jatinrajpoot/trinetix-backend:latest
     container_name: trinetix_backend
     restart: always
     ports:
@@ -23,6 +24,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    image: ghcr.io/jatinrajpoot/trinetix-frontend:latest
     container_name: trinetix_frontend
     restart: always
     ports:
