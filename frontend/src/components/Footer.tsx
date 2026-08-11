@@ -69,6 +69,7 @@ export default function Footer() {
               {[
                 { label: "Home", href: "/" },
                 { label: "About Us", href: "/about" },
+                { label: "Previous Work", href: "/previous-work" },
                 { label: "Testimonials", href: "/testimonials" },
                 { label: "Tech Blog", href: "/blog" },
                 { label: "Contact Us", href: "/contact" },
