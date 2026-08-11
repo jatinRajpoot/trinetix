@@ -1,158 +1,111 @@
-import Image from "next/image";
+"use client";
+
 import Link from "next/link";
-import { Mail, Heart, ArrowUpRight, GraduationCap, Github, Twitter, Linkedin, Instagram } from "lucide-react";
+import Image from "next/image";
+import { Mail, ArrowUpRight } from "lucide-react";
+
+const year = new Date().getFullYear();
 
 export default function Footer() {
   return (
-    <footer className="bg-[#003342] pt-16 pb-12 relative overflow-hidden text-slate-200">
-      {/* Geometric decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00A5CF]/30 to-transparent" />
-      <div className="geo-circle w-[600px] h-[600px] -top-80 -right-32 opacity-30" style={{ borderWidth: '1px' }} />
-      <div className="geo-circle w-[300px] h-[300px] bottom-0 left-10 opacity-20" style={{ borderWidth: '1px' }} />
-      <div className="geo-dot-grid inset-0 opacity-[0.03] w-full h-full" />
+    <footer className="mt-16 border-t border-[var(--border-subtle)] bg-white">
+      {/* Newsletter strip — Apple-like subtle band */}
+      <div className="border-b border-[var(--border-subtle)] bg-[var(--surface-subtle)]">
+        <div className="mx-auto flex max-w-[1200px] flex-col gap-6 px-6 py-8 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+          <div className="max-w-[520px]">
+            <h3 className="text-[15px] font-semibold tracking-[-0.01em] text-[var(--foreground)]">Stay in the loop</h3>
+            <p className="mt-1 text-[13.5px] leading-5 text-[var(--foreground-tertiary)]">Product updates, pricing changes, and student deadline reminders. No spam.</p>
+          </div>
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="flex w-full max-w-[420px] items-center gap-2"
+            aria-label="Newsletter"
+          >
+            <label htmlFor="newsletter-email" className="sr-only">Email address</label>
+            <input
+              id="newsletter-email"
+              type="email"
+              required
+              placeholder="you@company.com"
+              className="field-input !rounded-full flex-1 bg-white"
+            />
+            <button type="submit" className="btn-primary shrink-0">Subscribe</button>
+          </form>
+        </div>
+      </div>
 
-      {/* Background glows */}
-      <div className="absolute top-0 right-1/4 w-80 h-80 bg-[#00A5CF]/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-[#9FFFCB]/10 rounded-full blur-3xl pointer-events-none"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10 pb-12 border-b border-white/10">
-          
-          {/* Brand Info */}
-          <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="flex items-center gap-3.5 group">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#00212a] border-2 border-[#00A5CF]/50 p-1 flex items-center justify-center shadow-lg shadow-[#00A5CF]/20 group-hover:border-[#9FFFCB] group-hover:scale-105 transition-all duration-300 overflow-hidden shrink-0">
-                <Image
-                  src="/logo.png"
-                  alt="TriNetix Symbol"
-                  width={120}
-                  height={120}
-                  className="w-full h-full object-cover object-left scale-150"
-                />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-3xl sm:text-4xl font-black tracking-tight text-white flex items-center gap-0.5" style={{ fontFamily: "var(--font-syne, sans-serif)" }}>
-                  <span className="text-[#9FFFCB] font-extrabold">त्रि</span>
-                  <span className="purple-text-gradient">Netix</span>
-                </span>
-                <span className="text-[11px] sm:text-xs text-[#90cdd9] tracking-widest uppercase font-bold">
-                  Web Development Solutions
-                </span>
-              </div>
+      <div className="mx-auto max-w-[1200px] px-6 py-12 lg:px-8">
+        <div className="grid grid-cols-2 gap-8 lg:grid-cols-5">
+          {/* Brand */}
+          <div className="col-span-2">
+            <Link href="/" className="inline-flex items-center gap-3">
+              <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-[10px] bg-[#1d1d1f]">
+                <Image src="/logo.png" alt="" width={36} height={36} className="h-9 w-9 scale-[1.35] object-cover object-left" />
+              </span>
+              <span className="text-[17px] font-semibold tracking-[-0.02em] text-[#1d1d1f]">TriNetix</span>
             </Link>
-            <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
-              Premier web development agency crafting high-performance WordPress sites, native Android applications, custom enterprise projects, and dedicated college academic solutions.
+            <p className="mt-3 max-w-[32ch] text-[13.5px] leading-6 text-[var(--foreground-tertiary)]">
+              A web development laboratory building WordPress sites, Android apps, and academic systems for businesses and students. Crafted by Jatin Rajput &amp; Bharti Singh.
             </p>
-            <div className="flex items-center gap-3 pt-2">
-              {[
-                { icon: <Linkedin className="w-4 h-4" />, label: "LinkedIn" },
-                { icon: <Twitter className="w-4 h-4" />, label: "Twitter" },
-                { icon: <Instagram className="w-4 h-4" />, label: "Instagram" },
-                { icon: <Github className="w-4 h-4" />, label: "GitHub" },
-              ].map((social) => (
-                <a
-                  key={social.label}
-                  href="#"
-                  aria-label={social.label}
-                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-[#9FFFCB] hover:border-[#25A18E]/50 hover:bg-[#25A18E]/10 hover:scale-110 hover:-translate-y-0.5 transition-all duration-200"
-                >
-                  {social.icon}
-                </a>
-              ))}
+            <div className="mt-4 flex items-center gap-2 text-[13px]">
+              <Mail className="h-4 w-4 text-[var(--foreground-quaternary)]" aria-hidden />
+              <a href="mailto:Support@trinetix.in" className="font-medium text-[var(--foreground-secondary)] hover:text-[var(--foreground)] hover:underline underline-offset-4">Support@trinetix.in</a>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-white font-semibold text-base tracking-wide" style={{ fontFamily: "var(--font-syne, sans-serif)" }}>Company</h3>
-            <ul className="space-y-2.5 text-sm text-slate-400">
+          <div>
+            <h4 className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[var(--foreground-quaternary)]">Product</h4>
+            <ul className="mt-3 space-y-2.5 text-[13.5px]">
               {[
-                { label: "Home", href: "/" },
-                { label: "About Us", href: "/about" },
+                { label: "Features", href: "/features" },
+                { label: "Pricing", href: "/pricing" },
                 { label: "Previous Work", href: "/previous-work" },
-                { label: "Testimonials", href: "/testimonials" },
-                { label: "Tech Blog", href: "/blog" },
-                { label: "Contact Us", href: "/contact" },
-              ].map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="hover:text-[#9FFFCB] transition-colors flex items-center gap-1 group w-fit">
-                    <span className="relative">
-                      {item.label}
-                      <span className="absolute -bottom-px left-0 w-0 group-hover:w-full h-px bg-[#9FFFCB]/50 transition-all duration-300" />
-                    </span>
-                    <ArrowUpRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
-                  </Link>
-                </li>
+                { label: "Documentation", href: "/docs" },
+                { label: "Changelog", href: "/blog" },
+              ].map((i) => (
+                <li key={i.href}><Link href={i.href} className="text-[var(--foreground-tertiary)] hover:text-[var(--foreground)] transition-colors">{i.label}</Link></li>
               ))}
             </ul>
           </div>
 
-          {/* Services & Offerings */}
-          <div className="space-y-4">
-            <h3 className="text-white font-semibold text-base tracking-wide" style={{ fontFamily: "var(--font-syne, sans-serif)" }}>Services & Pricing</h3>
-            <ul className="space-y-2.5 text-sm text-slate-400">
-              <li>
-                <Link href="/services" className="hover:text-[#9FFFCB] transition-colors">
-                  WordPress Websites <span className="text-xs text-[#9FFFCB] font-semibold">(₹3,999)</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover:text-[#9FFFCB] transition-colors">
-                  Android Apps <span className="text-xs text-[#9FFFCB] font-semibold">(From ₹15k)</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover:text-[#9FFFCB] transition-colors">
-                  Custom Projects <span className="text-xs text-[#9FFFCB] font-semibold">(From ₹8k)</span>
-                </Link>
-              </li>
-              <li className="pt-2">
-                <Link href="/services#student-section" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#25A18E]/20 border border-[#25A18E]/40 text-[#9FFFCB] text-xs font-semibold hover:bg-[#25A18E]/30 hover:scale-105 transition-all duration-200">
-                  <GraduationCap className="w-3.5 h-3.5 text-[#9FFFCB]" />
-                  <span>College Projects (₹3k)</span>
-                </Link>
-              </li>
+          <div>
+            <h4 className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[var(--foreground-quaternary)]">Resources</h4>
+            <ul className="mt-3 space-y-2.5 text-[13.5px]">
+              {[
+                { label: "About us", href: "/about" },
+                { label: "Blog", href: "/blog" },
+                { label: "FAQ", href: "/faq" },
+                { label: "Careers", href: "/careers" },
+                { label: "Contact", href: "/contact" },
+              ].map((i) => (
+                <li key={i.href}><Link href={i.href} className="text-[var(--foreground-tertiary)] hover:text-[var(--foreground)] transition-colors">{i.label}</Link></li>
+              ))}
             </ul>
           </div>
 
-          {/* Founders & Leadership */}
-          <div className="space-y-4">
-            <h3 className="text-white font-semibold text-base tracking-wide" style={{ fontFamily: "var(--font-syne, sans-serif)" }}>Founders & Leadership</h3>
-            <div className="space-y-2.5 text-sm text-slate-300">
-              <div className="p-2.5 rounded-lg bg-white/5 border border-white/10 hover:border-[#25A18E]/40 hover:bg-white/8 transition-all duration-200">
-                <p className="font-semibold text-white">Mr. Jatin Rajput</p>
-                <p className="text-xs text-[#9FFFCB]">Co-Founder & Tech Lead</p>
-              </div>
-              <div className="p-2.5 rounded-lg bg-white/5 border border-white/10 hover:border-[#25A18E]/40 hover:bg-white/8 transition-all duration-200">
-                <p className="font-semibold text-white">Ms. Bharti Singh</p>
-                <p className="text-xs text-[#9FFFCB]">Co-Founder & Creative Director</p>
-              </div>
-              <div className="flex items-center gap-2 text-xs text-slate-400 pt-1">
-                <Mail className="w-3.5 h-3.5 text-[#9FFFCB] shrink-0" />
-                <a href="mailto:Support@trinetix.in" className="hover:text-[#9FFFCB] transition-colors">Support@trinetix.in</a>
-              </div>
-            </div>
+          <div>
+            <h4 className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[var(--foreground-quaternary)]">Legal</h4>
+            <ul className="mt-3 space-y-2.5 text-[13.5px]">
+              {[
+                { label: "Privacy Policy", href: "/privacy" },
+                { label: "Terms of Service", href: "/terms" },
+                { label: "Cookie Policy", href: "/cookies" },
+                { label: "Refund Policy", href: "/refund" },
+                { label: "Disclaimer", href: "/disclaimer" },
+              ].map((i) => (
+                <li key={i.href}><Link href={i.href} className="text-[var(--foreground-tertiary)] hover:text-[var(--foreground)] transition-colors">{i.label}</Link></li>
+              ))}
+            </ul>
           </div>
-
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col items-center sm:flex-row sm:justify-between gap-3 sm:gap-4 text-xs text-slate-500 text-center">
-          <p>© {new Date().getFullYear()} त्रिNetix. All rights reserved.</p>
-          <div className="flex items-center gap-1 text-slate-500">
-            <span>Crafted with</span>
-            <Heart className="w-3.5 h-3.5 text-[#00A5CF] fill-[#00A5CF]" />
-            <span>by त्रिNetix Team</span>
-          </div>
-          <div className="flex items-center gap-4 sm:gap-6">
-            <a href="#" className="hover:text-[#9FFFCB] transition-colors relative group">
-              Privacy Policy
-              <span className="absolute -bottom-px left-0 w-0 group-hover:w-full h-px bg-[#9FFFCB]/40 transition-all duration-300" />
-            </a>
-            <a href="#" className="hover:text-[#9FFFCB] transition-colors relative group">
-              Terms of Service
-              <span className="absolute -bottom-px left-0 w-0 group-hover:w-full h-px bg-[#9FFFCB]/40 transition-all duration-300" />
-            </a>
+        <div className="mt-10 flex flex-col gap-4 border-t border-[var(--border-subtle)] pt-6 text-[12.5px] text-[var(--foreground-quaternary)] sm:flex-row sm:items-center sm:justify-between">
+          <p>© {year} TriNetix Laboratory. All rights reserved.</p>
+          <div className="flex items-center gap-5">
+            <a href="https://x.com" aria-label="X" className="hover:text-[var(--foreground-tertiary)] transition-colors inline-flex items-center gap-1">X <ArrowUpRight className="h-3 w-3" aria-hidden /></a>
+            <a href="https://linkedin.com" aria-label="LinkedIn" className="hover:text-[var(--foreground-tertiary)] transition-colors inline-flex items-center gap-1">LinkedIn <ArrowUpRight className="h-3 w-3" aria-hidden /></a>
+            <a href="https://github.com" aria-label="GitHub" className="hover:text-[var(--foreground-tertiary)] transition-colors inline-flex items-center gap-1">GitHub <ArrowUpRight className="h-3 w-3" aria-hidden /></a>
+            <Link href="/shipping" className="hover:text-[var(--foreground-tertiary)] transition-colors">Shipping</Link>
           </div>
         </div>
       </div>

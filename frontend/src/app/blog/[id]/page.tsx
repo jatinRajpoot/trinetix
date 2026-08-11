@@ -1,125 +1,79 @@
-import React from "react";
 import Link from "next/link";
-import { ArrowLeft, User, Calendar, Clock, Sparkles, Share2, BookOpen } from "lucide-react";
+import { ArrowLeft, User, Calendar, Clock } from "lucide-react";
+import type { Metadata } from "next";
 
-interface Props {
-  params: Promise<{ id: string }>;
-}
-
-const ARTICLES_DATABASE: Record<string, {
-  title: string;
-  category: string;
-  date: string;
-  author: string;
-  readTime: string;
-  content: string[];
-}> = {
+const DB: Record<string, { title: string; category: string; date: string; author: string; readTime: string; content: string[] }> = {
   "nextjs-flask-architecture": {
-    title: "Why Next.js + Python Flask is the Ultimate Modern Tech Stack",
-    category: "Architecture",
-    date: "Aug 01, 2026",
-    author: "Mr. Jatin Rajput",
-    readTime: "5 min read",
+    title: "Why Next.js + Flask is the modern stack that ships",
+    category: "Architecture", date: "Aug 01, 2026", author: "Jatin Rajput", readTime: "5 min",
     content: [
-      "In modern web development, speed, security, and developer efficiency are critical. Next.js delivers world-class frontend performance through Server-Side Rendering (SSR) and React Server Components.",
-      "On the backend, Python Flask provides a lightweight, highly customizable RESTful API layer. Python's unparalleled ecosystem for data processing, AI integrations, and rapid prototyping makes Flask the perfect microservice engine.",
-      "At TriNetix, we combine Next.js on the frontend with Flask on the backend to deliver sub-second response times, modular architecture, and easy scalability for our enterprise clients."
-    ]
+      "Speed and maintainability win products. Next.js gives us server rendering, streaming, and excellent image/font ergonomics; Flask gives a minimal, explicit API layer that’s easy to reason about and deploy.",
+      "Python’s ecosystem handles everything around the core product — auth, data pipelines, and quick integrations — without bolting on heavy frameworks.",
+      "At TriNetix we pair Next.js on the frontend with Flask on the backend for fast loads and a clear ownership boundary. The result is code that’s pleasant to change.",
+    ],
   },
   "wordpress-conversion-tips": {
-    title: "5 Key Elements of a High-Converting WordPress Site",
-    category: "Web Design",
-    date: "Jul 28, 2026",
-    author: "Ms. Bharti Singh",
-    readTime: "4 min read",
+    title: "5 elements of a WordPress site that converts",
+    category: "Web Design", date: "Jul 28, 2026", author: "Bharti Singh", readTime: "4 min",
     content: [
-      "Building a successful WordPress site requires more than just installing a template. It requires strategic typography, clear call-to-actions, lightweight asset loading, and mobile-first responsive design.",
-      "1. Mobile-First Responsiveness: Over 70% of web traffic originates from smartphones.",
-      "2. Core Web Vitals Optimization: Google ranks fast-loading websites higher.",
-      "3. Clear Call-To-Action Buttons: Guide visitors seamlessly towards conversion.",
-      "Our ₹3,999 WordPress package at TriNetix includes all these essential elements out of the box."
-    ]
+      "Templates don’t convert — structure does. Hierarchy, whitespace, and a single primary action beat decorative flourishes.",
+      "Start mobile-first, keep fonts to one family with a strict scale, and make your CTA unavoidable. Then obsess over LCP and CLS.",
+      "Our ₹3,999 WordPress package bakes these elements in — so you launch with a site that’s fast and ready to measure.",
+    ],
   },
   "student-project-guide": {
-    title: "How to Excel in College Final-Year Computer Science Projects",
-    category: "Students Corner",
-    date: "Jul 20, 2026",
-    author: "Mr. Jatin Rajput",
-    readTime: "6 min read",
+    title: "How to earn an A+ on your final-year project",
+    category: "Students", date: "Jul 20, 2026", author: "Jatin Rajput", readTime: "6 min",
     content: [
-      "Final year college projects can feel daunting, but following a structured methodology guarantees top grades and viva success.",
-      "Always start with clear System Requirement Specifications (SRS) and modular architecture diagrams. Having clean, well-commented source code and a complete project report compliant with IEEE guidelines is essential.",
-      "TriNetix provides college projects with complete reports for just ₹3,000, along with one-on-one viva preparation."
-    ]
-  }
+      "Reviewers look for clarity: a crisp SRS, coherent diagrams, and code that can be explained. Start there before writing features.",
+      "Pick a focused scope, document assumptions, and keep commits small. Clean, commented modules and a reproducible setup script matter more than buzzwords.",
+      "TriNetix delivers projects with a complete IEEE report and viva prep — so your submission is defensible on day one.",
+    ],
+  },
 };
 
-export default async function BlogDetailPage({ params }: Props) {
-  const resolvedParams = await params;
-  const article = ARTICLES_DATABASE[resolvedParams.id] || ARTICLES_DATABASE["nextjs-flask-architecture"];
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const a = DB[id];
+  if (!a) return { title: "Article — TriNetix" };
+  return { title: a.title, description: a.content[0].slice(0, 150) };
+}
+
+export default async function BlogDetail({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const article = DB[id] ?? DB["nextjs-flask-architecture"];
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    author: { "@type": "Person", name: article.author },
+    datePublished: article.date,
+  };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 space-y-8">
-      {/* Back button */}
-      <Link
-        href="/blog"
-        className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-purple-400 transition-colors pt-4"
-      >
-        <ArrowLeft className="w-4 h-4" />
-        <span>Back to Articles</span>
+    <div className="mx-auto max-w-[720px] px-6 lg:px-8 pb-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <Link href="/blog" className="inline-flex items-center gap-1.5 pt-8 text-[13px] font-medium text-[var(--foreground-tertiary)] hover:text-[var(--foreground)]">
+        <ArrowLeft className="h-4 w-4" aria-hidden /> Back to articles
       </Link>
 
-      <article className="glass-card p-8 sm:p-12 rounded-3xl border border-white/10 space-y-8 relative overflow-hidden">
-        <div className="purple-glow-bg top-0 right-0 opacity-20"></div>
-
-        {/* Article Meta Header */}
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <span className="px-3.5 py-1 rounded-full bg-purple-950/80 border border-purple-500/40 text-purple-300 text-xs font-semibold">
-              {article.category}
-            </span>
-            <span className="text-xs text-gray-400 flex items-center gap-1">
-              <Clock className="w-3.5 h-3.5" />
-              {article.readTime}
-            </span>
-          </div>
-
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
-            {article.title}
-          </h1>
-
-          <div className="flex items-center gap-6 pt-2 border-t border-white/10 text-xs text-gray-400">
-            <div className="flex items-center gap-2">
-              <User className="w-4 h-4 text-purple-400" />
-              <span className="text-white font-medium">{article.author}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-purple-400" />
-              <span>{article.date}</span>
-            </div>
-          </div>
+      <article className="mt-6 rounded-2xl border border-[var(--border-subtle)] bg-white p-6 sm:p-8">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="badge">{article.category}</span>
+          <span className="inline-flex items-center gap-1 text-[12px] text-[var(--foreground-quaternary)]"><Clock className="h-3.5 w-3.5" aria-hidden /> {article.readTime}</span>
         </div>
-
-        {/* Content Paragraphs */}
-        <div className="space-y-6 text-gray-300 text-sm sm:text-base leading-relaxed border-t border-white/10 pt-8">
-          {article.content.map((paragraph, idx) => (
-            <p key={idx}>{paragraph}</p>
-          ))}
+        <h1 className="mt-4 text-[28px] font-semibold leading-tight tracking-[-0.025em] text-[#1d1d1f] sm:text-[32px]">{article.title}</h1>
+        <div className="mt-4 flex flex-wrap gap-4 border-y border-[var(--border-subtle)] py-3 text-[12px] text-[var(--foreground-tertiary)]">
+          <span className="inline-flex items-center gap-1.5"><User className="h-3.5 w-3.5 text-[var(--foreground-quaternary)]" aria-hidden /> {article.author}</span>
+          <span className="inline-flex items-center gap-1.5"><Calendar className="h-3.5 w-3.5 text-[var(--foreground-quaternary)]" aria-hidden /> {article.date}</span>
         </div>
-
-        {/* Author Footer Badge */}
-        <div className="p-6 rounded-2xl bg-purple-950/40 border border-purple-500/30 flex items-center justify-between">
-          <div>
-            <p className="text-xs text-purple-400 font-semibold uppercase">Author</p>
-            <p className="text-base font-bold text-white">{article.author}</p>
-            <p className="text-xs text-gray-400">Founder & Developer @ TriNetix</p>
-          </div>
-          <Link
-            href="/contact"
-            className="purple-btn-gradient px-4 py-2 rounded-lg text-xs font-semibold text-white"
-          >
-            Contact Author
-          </Link>
+        <div className="prose prose-neutral mt-6 max-w-none prose-p:text-[14.5px] prose-p:leading-7 prose-p:text-[var(--foreground-secondary)]">
+          {article.content.map((para, i) => <p key={i}>{para}</p>)}
+        </div>
+        <div className="mt-8 flex items-center justify-between rounded-xl border border-[var(--border-subtle)] bg-[var(--surface-subtle)] p-4">
+          <div><p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--foreground-quaternary)]">Author</p><p className="text-[14px] font-semibold">{article.author}</p><p className="text-[12px] text-[var(--foreground-tertiary)]">Founder @ TriNetix</p></div>
+          <Link href="/contact" className="btn-primary text-[13px]">Contact author</Link>
         </div>
       </article>
     </div>
