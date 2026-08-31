@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Mail, Phone, Clock, Send, CheckCircle2, AlertCircle, ChevronDown, Leaf } from "lucide-react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 export default function ContactClient() {
   const [name, setName] = useState("");
@@ -94,7 +95,21 @@ export default function ContactClient() {
             <h3 className="text-[14px] font-semibold">Contact us</h3>
             <div className="mt-4 space-y-4 text-[13.5px]">
               <div className="flex gap-3"><span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[var(--accent-muted)] bg-[var(--accent-soft)] text-[var(--accent)]"><Mail className="h-4 w-4" aria-hidden /></span><div><p className="text-[12px] text-[var(--foreground-quaternary)]">Email</p><a href="mailto:Support@trinetix.in" className="font-medium hover:underline underline-offset-4">Support@trinetix.in</a></div></div>
-              <div className="flex gap-3"><span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[var(--accent-muted)] bg-[var(--accent-soft)] text-[var(--accent)]"><Phone className="h-4 w-4" aria-hidden /></span><div><p className="text-[12px] text-[var(--foreground-quaternary)]">Phone & WhatsApp</p><a href="tel:+917027782346" className="font-medium hover:underline underline-offset-4">+91 70277 82346</a></div></div>
+              <div className="flex gap-3">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[var(--accent-muted)] bg-[var(--accent-soft)] text-[var(--accent)]"><Phone className="h-4 w-4" aria-hidden /></span>
+                <div>
+                  <p className="text-[12px] text-[var(--foreground-quaternary)]">Phone & WhatsApp</p>
+                  <a href="tel:+917027782346" className="font-medium hover:underline underline-offset-4">+91 70277 82346</a>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    <a href="tel:+917027782346" className="inline-flex items-center gap-1.5 rounded-full border border-[var(--accent-muted)] bg-white px-3 py-1.5 text-[12px] font-medium text-[var(--accent)] transition-colors hover:bg-[var(--accent-soft)]">
+                      <Phone className="h-3.5 w-3.5" aria-hidden /> Call now
+                    </a>
+                    <a href="https://wa.me/917027782346?text=Hi%20TriNetix%2C%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-full border border-[#bfe8cf] bg-[#e9f9ef] px-3 py-1.5 text-[12px] font-medium text-[#1a7f4b] transition-colors hover:bg-[#d9f3e3]">
+                      <WhatsAppIcon className="h-3.5 w-3.5" /> WhatsApp
+                    </a>
+                  </div>
+                </div>
+              </div>
               <div className="flex gap-3"><span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[var(--accent-muted)] bg-[var(--accent-soft)] text-[var(--accent)]"><Clock className="h-4 w-4" aria-hidden /></span><div><p className="text-[12px] text-[var(--foreground-quaternary)]">Hours</p><p className="font-medium">Mon–Sat 9:00–20:00</p><p className="text-[12px] text-[var(--accent)] font-medium">We reply in 2–4 hours</p></div></div>
             </div>
           </div>

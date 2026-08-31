@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, ArrowUpRight, Sparkles } from "lucide-react";
+import { Mail, Phone, ArrowUpRight, Sparkles } from "lucide-react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 const year = new Date().getFullYear();
 
@@ -54,6 +55,14 @@ export default function Footer() {
             <div className="mt-4 flex items-center gap-2 text-[13px]">
               <Mail className="h-4 w-4 text-[var(--accent-light)]" aria-hidden />
               <a href="mailto:Support@trinetix.in" className="font-medium text-[var(--foreground-secondary)] hover:text-[var(--accent)] hover:underline underline-offset-4">Support@trinetix.in</a>
+            </div>
+            <div className="mt-2 flex items-center gap-4 text-[13px]">
+              <a href="tel:+917027782346" className="inline-flex items-center gap-1.5 font-medium text-[var(--foreground-secondary)] hover:text-[var(--accent)] hover:underline underline-offset-4">
+                <Phone className="h-4 w-4 text-[var(--accent-light)]" aria-hidden /> +91 70277 82346
+              </a>
+              <a href="https://wa.me/917027782346?text=Hi%20TriNetix%2C%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" className="inline-flex items-center gap-1.5 font-medium text-[var(--foreground-secondary)] hover:text-[#1a7f4b] hover:underline underline-offset-4">
+                <WhatsAppIcon className="h-4 w-4 text-[#25d366]" /> WhatsApp
+              </a>
             </div>
             <p className="mt-2 text-[11.5px] leading-4 text-[var(--foreground-quaternary)]">Work with us directly. <br/>We reply in 2–4 hours.</p>
           </div>
