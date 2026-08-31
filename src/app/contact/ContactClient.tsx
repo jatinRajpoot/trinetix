@@ -15,12 +15,24 @@ export default function ContactClient() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`New inquiry from ${name} — ${serviceType}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "—"}\nService: ${serviceType}\nStudent: ${isStudent ? "Yes" : "No"}\n\n${message}`
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      setFeedback({ success: false, text: "Please fill in all required fields." });
+      return;
+    }
+    const text = encodeURIComponent(
+      `*New Inquiry from Website*\n\n` +
+      `*Name:* ${name}\n` +
+      `*Email:* ${email}\n` +
+      `*Phone:* ${phone || "—"}\n` +
+      `*Service:* ${serviceType}\n` +
+      `*Student:* ${isStudent ? "Yes" : "No"}\n\n` +
+      `*Message:* ${message}`
     );
-    window.location.href = `mailto:Support@trinetix.in?subject=${subject}&body=${body}`;
-    setFeedback({ success: true, text: `Thank you ${name}! Your email app opened with your message ready for Support@trinetix.in — press send and we’ll reply within 2–4 hours.` });
+    window.open(`https://wa.me/917027782346?text=${text}`, "_blank");
+    setFeedback({
+      success: true,
+      text: `Thank you ${name}! Redirecting you to WhatsApp to send your inquiry...`,
+    });
   };
 
   const faqs = [
