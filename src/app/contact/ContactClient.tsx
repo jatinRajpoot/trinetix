@@ -53,7 +53,7 @@ export default function ContactClient() {
               <div><label htmlFor="c-email" className="field-label">Email *</label><input id="c-email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="sameer@company.com" className="field-input" autoComplete="email" /></div>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <div><label htmlFor="c-phone" className="field-label">Phone</label><input id="c-phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+91 98765 43210" className="field-input" autoComplete="tel" /></div>
+              <div><label htmlFor="c-phone" className="field-label">Phone</label><input id="c-phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+91 70277 82346" className="field-input" autoComplete="tel" /></div>
               <div><label htmlFor="c-service" className="field-label">Service</label>
                 <select id="c-service" value={serviceType} onChange={(e) => setServiceType(e.target.value)} className="field-input">
                   <option>WordPress Website — from ₹3,999</option>
@@ -82,7 +82,7 @@ export default function ContactClient() {
             <h3 className="text-[14px] font-semibold">Contact us</h3>
             <div className="mt-4 space-y-4 text-[13.5px]">
               <div className="flex gap-3"><span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[var(--accent-muted)] bg-[var(--accent-soft)] text-[var(--accent)]"><Mail className="h-4 w-4" aria-hidden /></span><div><p className="text-[12px] text-[var(--foreground-quaternary)]">Email</p><a href="mailto:Support@trinetix.in" className="font-medium hover:underline underline-offset-4">Support@trinetix.in</a></div></div>
-              <div className="flex gap-3"><span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[var(--accent-muted)] bg-[var(--accent-soft)] text-[var(--accent)]"><Phone className="h-4 w-4" aria-hidden /></span><div><p className="text-[12px] text-[var(--foreground-quaternary)]">Phone & WhatsApp</p><p className="font-medium">+91 98765 43210</p></div></div>
+              <div className="flex gap-3"><span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[var(--accent-muted)] bg-[var(--accent-soft)] text-[var(--accent)]"><Phone className="h-4 w-4" aria-hidden /></span><div><p className="text-[12px] text-[var(--foreground-quaternary)]">Phone & WhatsApp</p><a href="tel:+917027782346" className="font-medium hover:underline underline-offset-4">+91 70277 82346</a></div></div>
               <div className="flex gap-3"><span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[var(--accent-muted)] bg-[var(--accent-soft)] text-[var(--accent)]"><Clock className="h-4 w-4" aria-hidden /></span><div><p className="text-[12px] text-[var(--foreground-quaternary)]">Hours</p><p className="font-medium">Mon–Sat 9:00–20:00</p><p className="text-[12px] text-[var(--accent)] font-medium">We reply in 2–4 hours</p></div></div>
             </div>
           </div>

@@ -61,7 +61,13 @@ const orgSchema = {
   url: siteUrl,
   logo: `${siteUrl}/logo.png`,
   description: defaultDesc,
-  contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: "Support@trinetix.in", availableLanguage: ["en"] },
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    email: "Support@trinetix.in",
+    telephone: "+91-70277-82346",
+    availableLanguage: ["en"],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -106,10 +106,12 @@ export default function Footer() {
 
         <div className="mt-10 flex flex-col gap-4 border-t border-[var(--border-subtle)] pt-6 text-[12.5px] text-[var(--foreground-quaternary)] sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} TriNetix Atelier. Crafted with intent in India. All rights reserved.</p>
-          <div className="flex items-center gap-5">
-            <a href="https://x.com" aria-label="X" className="hover:text-[var(--accent)] transition-colors inline-flex items-center gap-1">X <ArrowUpRight className="h-3 w-3" aria-hidden /></a>
-            <a href="https://linkedin.com" aria-label="LinkedIn" className="hover:text-[var(--accent)] transition-colors inline-flex items-center gap-1">LinkedIn <ArrowUpRight className="h-3 w-3" aria-hidden /></a>
-            <a href="https://github.com" aria-label="GitHub" className="hover:text-[var(--accent)] transition-colors inline-flex items-center gap-1">GitHub <ArrowUpRight className="h-3 w-3" aria-hidden /></a>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <a href="https://x.com/Trinetixin" target="_blank" rel="noopener noreferrer" aria-label="X" className="hover:text-[var(--accent)] transition-colors inline-flex items-center gap-1">X <ArrowUpRight className="h-3 w-3" aria-hidden /></a>
+            <a href="https://www.instagram.com/trinetix.in1/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-[var(--accent)] transition-colors inline-flex items-center gap-1">Instagram <ArrowUpRight className="h-3 w-3" aria-hidden /></a>
+            <a href="https://www.facebook.com/profile.php?id=61593020440116" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-[var(--accent)] transition-colors inline-flex items-center gap-1">Facebook <ArrowUpRight className="h-3 w-3" aria-hidden /></a>
+            <a href="https://www.linkedin.com/in/bharti-singh-00583b426/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-[var(--accent)] transition-colors inline-flex items-center gap-1">LinkedIn <ArrowUpRight className="h-3 w-3" aria-hidden /></a>
+            <a href="https://github.com/jatinRajpoot/trinetix" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-[var(--accent)] transition-colors inline-flex items-center gap-1">GitHub <ArrowUpRight className="h-3 w-3" aria-hidden /></a>
             <Link href="/shipping" className="hover:text-[var(--accent)] transition-colors">Shipping</Link>
           </div>
         </div>
