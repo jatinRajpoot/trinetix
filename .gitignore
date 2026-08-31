@@ -7,6 +7,9 @@
 *.pyc
 *.pyo
 
+# Firebase
+.firebase/
+
 # Environment & Config
 .env
 .env.local
