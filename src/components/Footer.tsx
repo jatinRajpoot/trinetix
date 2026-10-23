@@ -10,8 +10,7 @@ export default function Footer() {
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
         <section className="grid gap-8 border-b border-white/15 py-12 sm:py-16 lg:grid-cols-[1fr_auto] lg:items-end lg:py-20">
           <div className="max-w-[770px]">
-            <p className="text-[10px] font-semibold uppercase tracking-[.16em] text-[#ef8b6e]">A good first step is a conversation</p>
-            <h2 className="mt-4 text-[38px] font-medium leading-[.98] tracking-[-.065em] sm:text-[58px]">Have a website-shaped problem?</h2>
+            <h2 className="mt-0 text-[38px] font-medium leading-[.98] tracking-[-.065em] sm:text-[58px]">Have a website-shaped problem?</h2>
             <p className="mt-4 max-w-[570px] text-[13px] leading-6 text-white/58">Tell us what’s getting in your way. We’ll help you decide whether a new website, an app or a smaller change is the right move.</p>
           </div>
           <Link href="/contact" className="group inline-flex w-fit items-center gap-8 border border-white/35 px-5 py-4 text-[11px] font-semibold uppercase tracking-[.07em] transition-colors hover:border-[#ef8b6e] hover:bg-[#ef8b6e] hover:text-[#20241f]">Start with a short brief <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
@@ -26,8 +25,8 @@ export default function Footer() {
             <p className="mt-4 max-w-[320px] text-[12px] leading-6 text-white/55">Clear, useful digital experiences for real businesses. Designed and built with care in India.</p>
             <div className="mt-5 flex flex-col gap-2.5 text-[12px]">
               <a href="mailto:Support@trinetix.in" className="inline-flex w-fit items-center gap-2 text-white/75 hover:text-white"><Mail className="h-3.5 w-3.5 text-[#ef8b6e]" />Support@trinetix.in</a>
-              <a href="tel:+917027782346" className="inline-flex w-fit items-center gap-2 text-white/75 hover:text-white"><Phone className="h-3.5 w-3.5 text-[#ef8b6e]" />+91 70277 82346</a>
-              <a href="https://wa.me/917027782346?text=Hi%20TriNetix%2C%20I%20want%20to%20talk%20about%20a%20website." target="_blank" rel="noopener noreferrer" className="inline-flex w-fit items-center gap-2 text-white/75 hover:text-white"><WhatsAppIcon className="h-3.5 w-3.5 text-[#70d395]" />WhatsApp <ArrowUpRight className="h-3 w-3" /></a>
+              <a href="tel:+917206382346" className="inline-flex w-fit items-center gap-2 text-white/75 hover:text-white"><Phone className="h-3.5 w-3.5 text-[#ef8b6e]" />+91 72063 82346</a>
+              <a href="https://wa.me/917206382346?text=Hi%20TriNetix%2C%20I%20want%20to%20talk%20about%20a%20website." target="_blank" rel="noopener noreferrer" className="inline-flex w-fit items-center gap-2 text-white/75 hover:text-white"><WhatsAppIcon className="h-3.5 w-3.5 text-[#70d395]" />WhatsApp <ArrowUpRight className="h-3 w-3" /></a>
             </div>
           </div>
 

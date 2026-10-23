@@ -3,7 +3,7 @@ import WhatsAppIcon from "@/components/WhatsAppIcon";
 export default function WhatsAppFloat() {
   return (
     <a
-      href="https://wa.me/917027782346?text=Hi%20TriNetix%2C%20I%20want%20to%20discuss%20a%20project."
+      href="https://wa.me/917206382346?text=Hi%20TriNetix%2C%20I%20want%20to%20discuss%20a%20project."
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"

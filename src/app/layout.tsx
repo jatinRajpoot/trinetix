@@ -66,7 +66,7 @@ const orgSchema = {
     "@type": "ContactPoint",
     contactType: "customer support",
     email: "Support@trinetix.in",
-    telephone: "+91-70277-82346",
+    telephone: "+91-72063-82346",
     availableLanguage: ["en"],
   },
 };

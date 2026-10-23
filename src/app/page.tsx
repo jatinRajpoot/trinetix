@@ -22,8 +22,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-[#f4f1ea]">
         <div className="mx-auto grid max-w-[1440px] gap-9 px-5 pb-12 pt-10 sm:px-8 sm:pb-16 sm:pt-14 lg:grid-cols-[1.02fr_.98fr] lg:items-center lg:gap-12 lg:px-12 lg:pb-20 lg:pt-16">
           <div className="relative z-10 max-w-[720px] rise">
-            <p className="section-kicker"><span className="h-[2px] w-6 bg-[var(--accent)]" />Web design & development for growing businesses</p>
-            <h1 className="mt-6 max-w-[760px] text-[46px] font-medium leading-[.98] tracking-[-.075em] sm:text-[62px] lg:text-[76px]">Make it easy for customers <span className="font-serif italic font-normal text-[var(--accent)]">to choose you.</span></h1>
+            <h1 className="mt-0 max-w-[760px] text-[46px] font-medium leading-[.98] tracking-[-.075em] sm:text-[62px] lg:text-[76px]">Make it easy for customers <span className="font-serif italic font-normal text-[var(--accent)]">to choose you.</span></h1>
             <p className="mt-6 max-w-[550px] text-[14px] leading-7 text-[var(--foreground-secondary)] sm:text-[16px] sm:leading-8">We plan, design and build clear, fast websites and apps for real businesses. A better first impression, a smoother customer journey, and a team that stays with you after launch.</p>
             <div className="mt-7 flex flex-wrap items-center gap-3">
               <Link href="/contact" className="btn-primary min-h-[48px] px-5">Talk through your project <ArrowRight className="h-4 w-4" /></Link>
@@ -38,13 +37,11 @@ export default function HomePage() {
             <div className="relative aspect-[1.1/1] overflow-hidden bg-[#d4d3cb] sm:aspect-[1.2/1]">
               <Image src="/images/digital-workspace.jpg" alt="A bright, practical workspace with a website being built on screen" fill priority sizes="(max-width: 1024px) 100vw, 50vw" className="hero-photo object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#191d18]/65 via-transparent to-transparent" />
-              <div className="absolute left-5 top-5 flex items-center gap-2 bg-[#f4f1ea] px-3 py-2 text-[9px] font-semibold uppercase tracking-[.1em] text-[var(--foreground)] sm:left-7 sm:top-7"><span className="h-2 w-2 rounded-full bg-[var(--accent)]" />Built around your business</div>
               <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 text-white sm:bottom-7 sm:left-7 sm:right-7">
-                <div><p className="text-[9px] font-semibold uppercase tracking-[.13em] text-white/70">The point of a good website</p><p className="mt-1 max-w-[330px] text-[20px] font-medium leading-tight tracking-[-.045em] sm:text-[26px]">Help the right people take the next step.</p></div>
+                <p className="max-w-[330px] text-[20px] font-medium leading-tight tracking-[-.045em] sm:text-[26px]">Help the right people take the next step.</p>
                 <Link href="/features" className="flex h-10 w-10 shrink-0 items-center justify-center border border-white/60 text-white transition-colors hover:bg-white hover:text-[var(--foreground)]" aria-label="Explore services"><ArrowUpRight className="h-4 w-4" /></Link>
               </div>
             </div>
-            <div className="mt-2 flex items-center justify-between text-[9px] font-medium uppercase tracking-[.1em] text-[var(--foreground-quaternary)]"><span>Thoughtful strategy / clean design / careful build</span><span>TriNetix · India</span></div>
           </div>
         </div>
         <a href="#what-good-looks-like" className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 items-center gap-2 text-[9px] font-semibold uppercase tracking-[.14em] text-[var(--foreground-quaternary)] lg:flex">Scroll to explore <ArrowDown className="h-3 w-3" /></a>
@@ -59,8 +56,7 @@ export default function HomePage() {
       <section id="what-good-looks-like" className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-28">
         <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:gap-16">
           <div>
-            <p className="section-kicker"><span className="h-[2px] w-6 bg-[var(--accent)]" />Why it matters</p>
-            <h2 className="mt-4 max-w-[470px] text-[34px] font-medium leading-[1.04] tracking-[-.065em] sm:text-[46px]">Your website is often the first conversation you have with a customer.</h2>
+            <h2 className="mt-0 max-w-[470px] text-[34px] font-medium leading-[1.04] tracking-[-.065em] sm:text-[46px]">Your website is often the first conversation you have with a customer.</h2>
           </div>
           <div className="lg:pt-2">
             <p className="max-w-[620px] text-[14px] leading-7 text-[var(--foreground-tertiary)] sm:text-[15px]">Before someone calls, books or buys, they want to know if you can help them. We shape every page around the questions real people ask—not around a pile of features.</p>
@@ -73,7 +69,7 @@ export default function HomePage() {
       <section className="bg-[#20241f] py-14 text-[#f4f1ea] sm:py-20 lg:py-24">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <div className="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
-            <div><p className="section-kicker !text-[#ef8b6e]">Selected work · real websites</p><h2 className="mt-3 max-w-[690px] text-[34px] font-medium leading-[1.04] tracking-[-.065em] sm:text-[46px]">A few things we’ve put out into the world.</h2></div>
+            <div><h2 className="mt-0 max-w-[690px] text-[34px] font-medium leading-[1.04] tracking-[-.065em] sm:text-[46px]">A few things we’ve put out into the world.</h2></div>
             <Link href="/previous-work" className="group inline-flex w-fit items-center gap-2 border-b border-white/35 pb-1 text-[10px] font-semibold uppercase tracking-[.1em] text-white/80 hover:border-[#ef8b6e] hover:text-[#ef8b6e]">All projects <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" /></Link>
           </div>
           <WorkCarousel />
@@ -83,8 +79,7 @@ export default function HomePage() {
       <section className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-28">
         <div className="grid gap-8 lg:grid-cols-[.7fr_1.3fr] lg:gap-16">
           <div className="lg:sticky lg:top-28 lg:self-start">
-            <p className="section-kicker"><span className="h-[2px] w-6 bg-[var(--accent)]" />What we do</p>
-            <h2 className="mt-4 max-w-[410px] text-[36px] font-medium leading-[1.02] tracking-[-.07em] sm:text-[48px]">One studio. The right digital help.</h2>
+            <h2 className="mt-0 max-w-[410px] text-[36px] font-medium leading-[1.02] tracking-[-.07em] sm:text-[48px]">One studio. The right digital help.</h2>
             <p className="mt-4 max-w-[350px] text-[13px] leading-6 text-[var(--foreground-tertiary)]">Start with your goal. We’ll help you choose the work that will get you there—nothing more complicated than it needs to be.</p>
             <Link href="/features" className="mt-5 inline-flex items-center gap-2 border-b border-[var(--accent)] pb-1 text-[10px] font-semibold uppercase tracking-[.1em] text-[var(--accent)]">Explore services <ArrowRight className="h-3.5 w-3.5" /></Link>
           </div>
@@ -98,7 +93,7 @@ export default function HomePage() {
       <section className="border-y border-[#d5d0c6] bg-[#ebe7de]">
         <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
           <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:gap-16">
-            <div><p className="section-kicker"><span className="h-[2px] w-6 bg-[var(--accent)]" />No surprises</p><h2 className="mt-4 max-w-[430px] text-[34px] font-medium leading-[1.04] tracking-[-.065em] sm:text-[44px]">A simple process, with you in the loop.</h2><p className="mt-4 max-w-[360px] text-[12px] leading-6 text-[var(--foreground-tertiary)]">No long mystery phase. No vanishing act. You’ll know what we need, what happens next and what you’re paying for.</p></div>
+            <div><h2 className="mt-0 max-w-[430px] text-[34px] font-medium leading-[1.04] tracking-[-.065em] sm:text-[44px]">A simple process, with you in the loop.</h2><p className="mt-4 max-w-[360px] text-[12px] leading-6 text-[var(--foreground-tertiary)]">No long mystery phase. No vanishing act. You’ll know what we need, what happens next and what you’re paying for.</p></div>
             <ol className="border-t border-[#cfc9bd]">{[{n:"01",title:"Tell us what’s not working",body:"A short conversation to understand your business, audience and goals."},{n:"02",title:"Agree the plan",body:"A clear scope, fixed quote and sensible timeline before any build begins."},{n:"03",title:"Review and launch",body:"See the work in progress, give feedback and get support through handover."}].map((s)=><li key={s.n} className="grid grid-cols-[42px_1fr] gap-4 border-b border-[#cfc9bd] py-5 sm:grid-cols-[58px_1fr] sm:gap-6"><span className="pt-1 text-[10px] font-semibold text-[var(--accent)]">{s.n}</span><div><h3 className="text-[16px] font-medium tracking-[-.03em]">{s.title}</h3><p className="mt-1 text-[12px] leading-5 text-[var(--foreground-tertiary)]">{s.body}</p></div></li>)}</ol>
           </div>
         </div>
@@ -106,14 +101,14 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
         <div className="grid gap-8 lg:grid-cols-[.7fr_1.3fr] lg:gap-16">
-          <div><p className="section-kicker"><span className="h-[2px] w-6 bg-[var(--accent)]" />Useful to know</p><h2 className="mt-4 max-w-[410px] text-[34px] font-medium leading-[1.04] tracking-[-.065em] sm:text-[44px]">A few things you might be wondering.</h2><p className="mt-3 max-w-[360px] text-[12px] leading-6 text-[var(--foreground-tertiary)]">If your question isn’t here, send us a note. We’re happy to talk it through.</p><Link href="/faq" className="mt-4 inline-flex items-center gap-2 border-b border-[var(--accent)] pb-1 text-[10px] font-semibold uppercase tracking-[.1em] text-[var(--accent)]">Every answer <ArrowRight className="h-3.5 w-3.5" /></Link></div>
+          <div><h2 className="mt-0 max-w-[410px] text-[34px] font-medium leading-[1.04] tracking-[-.065em] sm:text-[44px]">A few things you might be wondering.</h2><p className="mt-3 max-w-[360px] text-[12px] leading-6 text-[var(--foreground-tertiary)]">If your question isn’t here, send us a note. We’re happy to talk it through.</p><Link href="/faq" className="mt-4 inline-flex items-center gap-2 border-b border-[var(--accent)] pb-1 text-[10px] font-semibold uppercase tracking-[.1em] text-[var(--accent)]">Every answer <ArrowRight className="h-3.5 w-3.5" /></Link></div>
           <div className="border-t border-[var(--border)]">{questions.map((item)=><details key={item.q} className="group border-b border-[var(--border)]"><summary className="flex cursor-pointer list-none items-center justify-between gap-5 py-5 text-[14px] font-medium tracking-[-.025em] [&::-webkit-details-marker]:hidden">{item.q}<ChevronDown className="h-4 w-4 shrink-0 text-[var(--accent)] transition-transform group-open:rotate-180" /></summary><p className="max-w-[680px] pb-5 pr-8 text-[12px] leading-6 text-[var(--foreground-tertiary)]">{item.a}</p></details>)}</div>
         </div>
       </section>
 
       <section className="mx-5 mb-16 bg-[var(--accent)] text-white sm:mx-8 lg:mx-12">
         <div className="mx-auto grid max-w-[1440px] gap-7 px-6 py-10 sm:px-10 sm:py-14 lg:grid-cols-[1fr_auto] lg:items-end lg:px-14 lg:py-16">
-          <div><p className="text-[9px] font-semibold uppercase tracking-[.16em] text-white/75">One good conversation can clarify a lot</p><h2 className="mt-3 max-w-[760px] text-[37px] font-medium leading-[.98] tracking-[-.065em] sm:text-[55px]">What should your website help you do?</h2><p className="mt-4 max-w-[570px] text-[13px] leading-6 text-white/80">Tell us a little about your business. We’ll come back with the right questions and a clear way forward.</p></div>
+          <div><h2 className="mt-0 max-w-[760px] text-[37px] font-medium leading-[.98] tracking-[-.065em] sm:text-[55px]">What should your website help you do?</h2><p className="mt-4 max-w-[570px] text-[13px] leading-6 text-white/80">Tell us a little about your business. We’ll come back with the right questions and a clear way forward.</p></div>
           <Link href="/contact" className="group inline-flex w-fit items-center gap-7 border border-white/70 px-5 py-4 text-[10px] font-semibold uppercase tracking-[.1em] transition-colors hover:bg-white hover:text-[var(--accent)]">Let’s talk <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
         </div>
       </section>

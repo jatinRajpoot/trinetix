@@ -44,7 +44,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-5 lg:flex">
-          <a href="tel:+917027782346" className="text-[11px] font-medium tracking-[.01em] text-[var(--foreground-tertiary)] hover:text-[var(--foreground)]">+91 70277 82346</a>
+          <a href="tel:+917206382346" className="text-[11px] font-medium tracking-[.01em] text-[var(--foreground-tertiary)] hover:text-[var(--foreground)]">+91 72063 82346</a>
           <Link href="/contact" className="group inline-flex items-center gap-2 bg-[var(--accent)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[.05em] text-white transition-colors hover:bg-[var(--accent-hover)]">Start a project <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></Link>
         </div>
 
@@ -59,7 +59,7 @@ export default function Header() {
           {links.map((link, i) => <Link key={link.href} href={link.href} className="flex items-center justify-between border-b border-white/15 py-4 text-[28px] font-medium tracking-[-.05em] transition-colors hover:text-[#ef8b6e]"><span>{link.label}</span><span className="text-[10px] font-medium tracking-normal text-white/35">0{i + 1}</span></Link>)}
         </nav>
         <Link href="/contact" className="mt-7 flex items-center justify-between bg-[var(--accent)] px-5 py-4 text-[13px] font-semibold uppercase tracking-[.04em] text-white">Tell us about your project <ArrowUpRight className="h-4 w-4" /></Link>
-        <a href="tel:+917027782346" className="mt-5 inline-block text-[12px] text-white/60">+91 70277 82346</a>
+        <a href="tel:+917206382346" className="mt-5 inline-block text-[12px] text-white/60">+91 72063 82346</a>
       </div>}
     </header>
   );
