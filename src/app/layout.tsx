@@ -15,12 +15,12 @@ const geist = Geist({
 
 const siteUrl = "https://trinetix.in";
 const siteName = "TriNetix";
-const defaultTitle = "TriNetix — Websites that help your business grow";
+const defaultTitle = "TriNetix — Clear, useful websites for growing businesses";
 const defaultDesc =
-  "Get a professional website, web app or Android app built around your goals. Clear pricing, direct communication and support from planning to launch.";
+  "Websites and apps designed to help customers understand what you do, trust your business and take the next step. Clear scope, honest pricing and direct support.";
 
 export const viewport: Viewport = {
-  themeColor: "#f6f8fa",
+  themeColor: "#f4f1ea",
   colorScheme: "light",
   width: "device-width",
   initialScale: 1,
@@ -81,7 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen bg-[var(--background)] text-[var(--foreground)] flex flex-col antialiased selection:bg-[var(--accent)] selection:text-white">
         <a href="#main" className="skip-link">Skip to content</a>
         <Header />
-        <main id="main" className="flex-grow pt-[72px]">{children}</main>
+        <main id="main" className="flex-grow pt-[74px]">{children}</main>
         <Footer />
         <WhatsAppFloat />
       </body>

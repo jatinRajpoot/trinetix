@@ -1,21 +1,16 @@
 import type { Metadata } from "next";
 import TestimonialsClient from "./TestimonialsClient";
-import { Leaf } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Testimonials",
-  description: "What our clients and students say about working with TriNetix.",
+  title: "Client feedback",
+  description: "Words from clients and students who have worked with TriNetix.",
 };
 
 export default function TestimonialsPage() {
   return (
-    <div className="mx-auto max-w-[1200px] px-6 lg:px-8 pb-16">
-      <section className="mx-auto max-w-[720px] pt-10 text-center sm:pt-12">
-        <p className="inline-flex items-center justify-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--accent)]"><Leaf className="h-3 w-3" /> Testimonials</p>
-        <h1 className="mt-3 text-[34px] font-semibold tracking-[-0.035em] leading-[0.92] text-[var(--foreground)] sm:text-[44px]">What people<br/><span className="font-normal italic text-[var(--foreground-tertiary)]">say about us.</span></h1>
-        <p className="mx-auto mt-4 max-w-[56ch] text-[15px] leading-7 text-[var(--foreground-tertiary)]">Real words from clients and students we’ve worked with.</p>
-        <TestimonialsClient />
-      </section>
+    <div className="bg-[var(--background)]">
+      <section className="bg-[#20241f] text-[#f4f1ea]"><div className="mx-auto max-w-[1440px] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-20"><p className="section-kicker !text-[#ef8b6e]">Client feedback · In their words</p><h1 className="mt-5 max-w-[780px] text-[44px] font-medium leading-[.97] tracking-[-.075em] sm:text-[62px]">Good work should feel good to work on.</h1><p className="mt-4 max-w-[560px] text-[13px] leading-7 text-white/65 sm:text-[14px]">A few notes from people who have worked with us on websites, apps and student projects.</p></div></section>
+      <section className="mx-auto max-w-[1440px] px-5 pb-20 sm:px-8 lg:px-12"><TestimonialsClient/></section>
     </div>
   );
 }

@@ -1,99 +1,45 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Check, Code2, Globe, GraduationCap, LifeBuoy, LockKeyhole, Smartphone, Zap } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Services",
-  description: "Explore TriNetix services: business websites, custom web apps, Android apps and student project support.",
+  description: "Business websites, custom web apps, Android apps and student project support—with clear scope and practical handover.",
 };
 
-const offerings = [
-  {
-    icon: Globe,
-    title: "Business websites",
-    intro: "Make it easy for the right people to find you, understand what you offer and take the next step.",
-    points: ["Custom look and feel for your business", "Mobile-first, quick-loading pages", "Clear service information and calls to action", "Contact, map and WhatsApp integration", "Easy content updates and handover"],
-    from: "From ₹3,999",
-    href: "/contact?service=WordPress",
-    cta: "Plan a website",
-  },
-  {
-    icon: Code2,
-    title: "Custom web apps",
-    intro: "Replace a clunky manual process or bring your product idea online with a web app that fits your workflow.",
-    points: ["Dashboards, portals and internal tools", "Accounts, roles and secure data flows", "APIs and third-party integrations", "Built around your requirements", "Clear documentation and handover"],
-    from: "From ₹8,000",
-    href: "/contact?service=CustomProject",
-    cta: "Discuss a web app",
-  },
-  {
-    icon: Smartphone,
-    title: "Android apps",
-    intro: "Give customers or your team a useful mobile experience, with the features that actually matter.",
-    points: ["App structure and interface design", "Backend and API integration", "Offline and notification features", "Testing on Android devices", "Help preparing for Play Store"],
-    from: "From ₹15,000",
-    href: "/contact?service=AndroidApp",
-    cta: "Discuss an Android app",
-  },
+const detail = [
+  { number: "01", id: "business-websites", title: "Business websites", start: "From ₹3,999", image: "/images/doctor-portrait.jpg", alt: "Doctor portrait, an example of a business that needs a clear online presence", intro: "Your website should answer the important questions before a customer needs to ask. We bring your services, proof and contact options together in one clear place.", points: ["Custom design shaped around your business", "Mobile-friendly pages and clear calls to action", "Contact forms, maps and WhatsApp links", "SEO-ready structure and a useful handover"], link: "/contact?service=WordPress", action: "Plan my website" },
+  { number: "02", id: "custom-web-apps", title: "Custom web apps", start: "From ₹8,000", image: "/images/digital-workspace.jpg", alt: "Developer workspace with an app open on a laptop", intro: "When off-the-shelf tools don’t fit, a small custom app can make a clunky process easier for your team or your customers.", points: ["Customer portals, dashboards and booking flows", "Accounts, permissions and data handling", "APIs and third-party integrations", "Built around a clear, agreed scope"], link: "/contact?service=CustomProject", action: "Discuss a web app" },
+  { number: "03", id: "android-apps", title: "Android apps", start: "From ₹15,000", image: "/images/healthcare-clinic.jpg", alt: "Person using a phone as part of a healthcare interaction", intro: "A useful app starts with a job worth doing. We’ll help shape the experience, build the core features and support you through release.", points: ["Product flow and interface design", "Backend and API integration", "Offline and notification features where useful", "Testing and Play Store preparation"], link: "/contact?service=AndroidApp", action: "Talk about an app" },
 ];
 
 export default function FeaturesPage() {
   return (
-    <div className="bg-[var(--background)] pb-16 sm:pb-20">
-      <section className="bg-white">
-        <div className="mx-auto max-w-[1280px] px-5 pb-12 pt-12 sm:px-7 sm:pb-16 sm:pt-16 lg:px-10">
-          <p className="section-kicker"><Zap className="h-4 w-4" /> What we do</p>
-          <div className="mt-4 grid gap-5 lg:grid-cols-[1fr_.8fr] lg:items-end">
-            <h1 className="max-w-[780px] text-[40px] font-semibold leading-[1.03] tracking-[-.06em] sm:text-[54px]">Digital products made useful, clear and easy to own.</h1>
-            <p className="max-w-[510px] text-[14px] leading-7 text-[var(--foreground-tertiary)] sm:text-[15px]">Whether you’re putting your business online or building a custom tool, we help you choose the right approach and make the whole process understandable.</p>
-          </div>
-          <div className="mt-7 flex flex-wrap gap-2 text-[11px] font-medium text-[var(--foreground-secondary)]">
-            {["Clear scope before work", "Built for phones", "Direct communication", "Help after launch"].map((item) => <span key={item} className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-subtle)] bg-[var(--background)] px-3 py-1.5"><Check className="h-3.5 w-3.5 text-[#16805c]" />{item}</span>)}
-          </div>
+    <div className="bg-[var(--background)]">
+      <section className="relative overflow-hidden bg-[#20241f] text-[#f4f1ea]">
+        <div className="mx-auto grid max-w-[1440px] gap-9 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[1fr_.82fr] lg:items-end lg:px-12 lg:py-20">
+          <div><p className="section-kicker !text-[#ef8b6e]">A good fit, not a bigger package</p><h1 className="mt-5 max-w-[790px] text-[45px] font-medium leading-[.97] tracking-[-.075em] sm:text-[62px]">Build the thing your business actually needs.</h1><p className="mt-5 max-w-[570px] text-[13px] leading-7 text-white/65 sm:text-[15px]">Websites, web apps and mobile apps designed around your customers and your day-to-day work. Clear goals first; sensible technology second.</p><Link href="/contact" className="mt-7 inline-flex items-center gap-3 border border-[#ef8b6e] bg-[#ef8b6e] px-5 py-3.5 text-[10px] font-semibold uppercase tracking-[.1em] text-[#20241f] transition-colors hover:border-white hover:bg-white">Tell us what you need <ArrowUpRight className="h-4 w-4" /></Link></div>
+          <div className="relative aspect-[1.45/1] overflow-hidden bg-[#5b5b50]"><Image src="/images/digital-workspace.jpg" alt="Laptop and tools on a desk in a bright workspace" fill priority sizes="(max-width: 1024px) 100vw, 42vw" className="object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" /><p className="absolute bottom-4 left-4 text-[9px] font-medium uppercase tracking-[.12em] text-white/80">Build with care, from the first conversation.</p></div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1280px] px-5 pt-10 sm:px-7 sm:pt-14 lg:px-10">
-        <div className="grid gap-4 lg:grid-cols-3">
-          {offerings.map((offering) => (
-            <article key={offering.title} className="flex flex-col rounded-[22px] border border-[var(--border-subtle)] bg-white p-6 shadow-[0_8px_25px_rgba(16,32,51,.04)] sm:p-7">
-              <span className="flex h-11 w-11 items-center justify-center rounded-[14px] bg-[var(--accent-soft)] text-[var(--accent)]"><offering.icon className="h-5 w-5" /></span>
-              <h2 className="mt-5 text-[20px] font-semibold tracking-[-.04em]">{offering.title}</h2>
-              <p className="mt-2 min-h-[70px] text-[13px] leading-6 text-[var(--foreground-tertiary)]">{offering.intro}</p>
-              <ul className="mt-5 flex-1 space-y-3 border-t border-[var(--border-subtle)] pt-5 text-[12.5px] leading-5 text-[var(--foreground-secondary)]">
-                {offering.points.map((point) => <li key={point} className="flex gap-2.5"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[#16805c]" /><span>{point}</span></li>)}
-              </ul>
-              <div className="mt-6 flex items-center justify-between gap-3"><span className="text-[13px] font-semibold text-[var(--foreground)]">{offering.from}</span><Link href={offering.href} className="inline-flex items-center gap-1.5 text-[12px] font-semibold text-[var(--accent)] hover:underline">{offering.cta}<ArrowRight className="h-3.5 w-3.5" /></Link></div>
-            </article>
-          ))}
+      <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
+        <div className="grid gap-3 border-t border-[var(--border)] pt-5 sm:grid-cols-[.55fr_1.45fr] sm:gap-10"><p className="section-kicker">How we help</p><p className="max-w-[740px] text-[22px] font-medium leading-tight tracking-[-.045em] sm:text-[31px]">From your first web presence to a tool that removes friction, we make digital work feel more straightforward.</p></div>
+        <div className="mt-12 border-t border-[var(--border)]">
+          {detail.map((service, index) => <article id={service.id} key={service.id} className={`grid scroll-mt-28 gap-7 border-b border-[var(--border)] py-8 sm:py-10 lg:grid-cols-2 lg:gap-14 ${index % 2 === 1 ? "lg:[&>div:first-child]:order-2" : ""}`}>
+            <div className="relative min-h-[240px] overflow-hidden bg-[#ded9ce] sm:min-h-[320px]"><Image src={service.image} alt={service.alt} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 hover:scale-[1.025]" /><span className="absolute left-4 top-4 bg-[#f4f1ea] px-3 py-2 text-[9px] font-semibold uppercase tracking-[.1em]">{service.number} / Service</span></div>
+            <div className="flex flex-col justify-center lg:py-4"><div className="flex flex-wrap items-center justify-between gap-3"><p className="section-kicker">{service.number} — {service.start}</p><span className="text-[9px] font-medium uppercase tracking-[.12em] text-[var(--foreground-quaternary)]">Scope confirmed before work</span></div><h2 className="mt-4 text-[34px] font-medium leading-[1.02] tracking-[-.065em] sm:text-[43px]">{service.title}</h2><p className="mt-4 max-w-[500px] text-[13px] leading-7 text-[var(--foreground-tertiary)]">{service.intro}</p><ul className="mt-5 grid gap-x-5 gap-y-2.5 text-[11px] text-[var(--foreground-secondary)] sm:grid-cols-2">{service.points.map((point) => <li key={point} className="flex gap-2"><Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[var(--accent)]" />{point}</li>)}</ul><Link href={service.link} className="group mt-7 inline-flex w-fit items-center gap-3 border-b border-[var(--accent)] pb-1.5 text-[10px] font-semibold uppercase tracking-[.1em]">{service.action}<ArrowRight className="h-3.5 w-3.5 text-[var(--accent)] transition-transform group-hover:translate-x-1" /></Link></div>
+          </article>)}
         </div>
       </section>
 
-      <section className="mx-auto mt-14 max-w-[1280px] px-5 sm:px-7 lg:px-10">
-        <div className="grid gap-8 overflow-hidden rounded-[26px] bg-[#10233d] p-6 text-white sm:p-9 lg:grid-cols-[.8fr_1.2fr] lg:p-10">
-          <div>
-            <p className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[.1em] text-[#a9c1ff]"><GraduationCap className="h-4 w-4" /> Student project support</p>
-            <h2 className="mt-3 text-[28px] font-semibold leading-tight tracking-[-.05em] sm:text-[34px]">Understand the project you submit.</h2>
-            <p className="mt-3 max-w-[440px] text-[13px] leading-6 text-white/65">Support for college projects with runnable code, a structured report, diagrams and a clear setup guide.</p>
-            <div className="mt-5 flex items-center gap-3"><span className="text-[24px] font-semibold tracking-[-.05em]">From ₹3,000</span><Link href="/pricing#students" className="text-[12px] font-medium text-[#b8cbff] hover:underline">View full details <ArrowRight className="inline h-3.5 w-3.5" /></Link></div>
-          </div>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {["Runnable source code", "Project report", "System and database diagrams", "Setup notes and guidance"].map((item) => <div key={item} className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[.06] px-4 py-3 text-[12.5px] text-white/85"><Check className="h-4 w-4 shrink-0 text-[#83e2b6]" />{item}</div>)}
-          </div>
-        </div>
+      <section className="mx-5 mb-14 grid gap-0 bg-[#e9e4da] sm:mx-8 lg:mx-12 lg:grid-cols-[.8fr_1.2fr]">
+        <div className="p-6 sm:p-9 lg:p-11"><p className="section-kicker">For students</p><h2 className="mt-3 text-[30px] font-medium leading-[1.03] tracking-[-.06em] sm:text-[40px]">Build it. Understand it. Present it.</h2><p className="mt-4 max-w-[400px] text-[12px] leading-6 text-[var(--foreground-tertiary)]">Practical support for college projects: runnable code, a structured report, diagrams and guidance to help you understand your work.</p><p className="mt-5 text-[10px] font-medium uppercase tracking-[.1em] text-[var(--foreground-tertiary)]">Project + report from</p><p className="text-[28px] font-medium tracking-[-.06em]">₹3,000</p><Link href="/contact?type=student" className="group mt-4 inline-flex items-center gap-3 border-b border-[var(--accent)] pb-1 text-[10px] font-semibold uppercase tracking-[.1em] text-[var(--accent)]">Ask about student support <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" /></Link></div>
+        <div className="grid grid-cols-2 border-t border-[#d4cec2] lg:border-l lg:border-t-0">{["Runnable source code", "Project report", "System & database diagrams", "Setup guide and guidance"].map((item, index) => <div key={item} className={`flex min-h-[110px] flex-col justify-between border-[#d4cec2] p-4 sm:min-h-[150px] sm:p-6 ${index % 2 === 0 ? "border-r" : ""} ${index < 2 ? "border-b" : ""}`}><span className="text-[9px] font-semibold tracking-[.1em] text-[var(--accent)]">0{index + 1}</span><span className="max-w-[180px] text-[13px] font-medium leading-snug tracking-[-.02em]">{item}</span></div>)}</div>
       </section>
 
-      <section className="mx-auto mt-16 max-w-[1280px] px-5 sm:px-7 lg:px-10">
-        <div className="grid gap-4 sm:grid-cols-3">
-          {[
-            { icon: LockKeyhole, title: "Thoughtful by default", body: "We take care with performance, accessibility and the details people rely on." },
-            { icon: LifeBuoy, title: "Help when you need it", body: "We’ll answer questions, share a useful handover and support you after delivery." },
-            { icon: Zap, title: "No needless complexity", body: "We pick tools that fit the problem—not the other way around." },
-          ].map((item) => <div key={item.title} className="rounded-[18px] border border-[var(--border-subtle)] bg-white p-5"><item.icon className="h-5 w-5 text-[var(--accent)]" /><h3 className="mt-4 text-[14px] font-semibold">{item.title}</h3><p className="mt-1.5 text-[12px] leading-5 text-[var(--foreground-tertiary)]">{item.body}</p></div>)}
-        </div>
-      </section>
-
-      <div className="mx-auto mt-12 max-w-[1280px] px-5 text-center sm:px-7 lg:px-10"><p className="text-[13px] text-[var(--foreground-tertiary)]">Not sure what you need yet? That’s okay—we can figure it out together.</p><Link href="/contact" className="btn-primary mt-4">Tell us about your idea <ArrowRight className="h-4 w-4" /></Link></div>
+      <section className="mx-auto max-w-[1440px] px-5 pb-20 sm:px-8 lg:px-12"><div className="flex flex-col gap-4 border-t border-[var(--border)] pt-5 sm:flex-row sm:items-center sm:justify-between"><p className="max-w-[640px] text-[17px] font-medium tracking-[-.035em]">Not sure which route to take? Describe the problem. We’ll help you find the smallest useful solution.</p><Link href="/contact" className="group inline-flex w-fit items-center gap-3 bg-[var(--foreground)] px-5 py-3.5 text-[10px] font-semibold uppercase tracking-[.1em] text-white hover:bg-[var(--accent)]">Talk to a person <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" /></Link></div></section>
     </div>
   );
 }

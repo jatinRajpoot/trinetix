@@ -6,20 +6,11 @@ import { ChevronDown } from "lucide-react";
 export default function FaqClient({ faqs }: { faqs: { q: string; a: string }[] }) {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <div className="divide-y divide-[var(--border-subtle)] overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-white">
-      {faqs.map((f, i) => (
-        <div key={f.q}>
-          <button
-            onClick={() => setOpen(open === i ? null : i)}
-            aria-expanded={open === i}
-            className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-[14px] font-medium text-[var(--foreground)] hover:bg-[var(--accent-soft)] transition-colors"
-          >
-            <span>{f.q}</span>
-            <ChevronDown className={`h-4 w-4 shrink-0 text-[var(--accent)]/50 transition-transform ${open === i ? "rotate-180" : ""}`} aria-hidden />
-          </button>
-          {open === i && <div className="px-5 pb-4 text-[13.5px] leading-6 text-[var(--foreground-tertiary)]">{f.a}</div>}
-        </div>
-      ))}
+    <div className="border-t border-[var(--border)]">
+      {faqs.map((faq, index) => <div key={faq.q} className="border-b border-[var(--border)]">
+        <button type="button" onClick={()=>setOpen(open===index?null:index)} aria-expanded={open===index} className="flex w-full items-center justify-between gap-5 py-4 text-left text-[13px] font-medium tracking-[-.02em] sm:py-5"><span>{faq.q}</span><ChevronDown className={`h-4 w-4 shrink-0 text-[var(--accent)] transition-transform ${open===index?"rotate-180":""}`}/></button>
+        {open===index&&<p className="max-w-[690px] pb-5 pr-8 text-[11px] leading-6 text-[var(--foreground-tertiary)]">{faq.a}</p>}
+      </div>)}
     </div>
   );
 }

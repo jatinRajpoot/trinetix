@@ -5,80 +5,62 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 
-const NAV = [
-  { name: "Services", href: "/features" },
-  { name: "Our work", href: "/previous-work" },
-  { name: "Pricing", href: "/pricing" },
-  { name: "About", href: "/about" },
-  { name: "Insights", href: "/blog" },
+const links = [
+  { label: "Work", href: "/previous-work" },
+  { label: "Services", href: "/features" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Studio", href: "/about" },
+  { label: "Notes", href: "/blog" },
 ];
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    setMenuOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [open]);
-
-  useEffect(() => setOpen(false), [pathname]);
+    if (!menuOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = previous; };
+  }, [menuOpen]);
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-200 ${scrolled ? "border-[var(--border-subtle)] bg-white/95 shadow-[0_6px_24px_rgba(16,32,51,.06)] backdrop-blur-xl" : "border-transparent bg-white/90 backdrop-blur-xl"}`}>
-      <div className="mx-auto flex h-[72px] max-w-[1280px] items-center justify-between px-5 sm:px-7 lg:px-10">
-        <Link href="/" className="group inline-flex shrink-0 items-center gap-2.5" aria-label="TriNetix home">
-          <span className="flex h-10 w-10 items-center justify-center rounded-[13px] bg-[var(--accent)] text-[19px] font-bold tracking-[-.08em] text-white shadow-[0_5px_12px_rgba(36,89,211,.24)]">T<span className="text-[#9bb8ff]">N</span></span>
-          <span className="flex flex-col leading-none">
-            <span className="text-[18px] font-bold tracking-[-.055em] text-[var(--foreground)]">TriNetix</span>
-            <span className="mt-1 text-[9px] font-semibold uppercase tracking-[.16em] text-[var(--foreground-quaternary)]">Digital studio</span>
-          </span>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-[#ded9cf] bg-[#f4f1ea]/95 backdrop-blur-sm">
+      <div className="mx-auto flex h-[74px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
+        <Link href="/" className="group flex items-center gap-3" aria-label="TriNetix home">
+          <span className="relative flex h-9 w-9 items-center justify-center border border-[#242821] text-[15px] font-black tracking-[-.12em] text-[#242821] after:absolute after:-bottom-1 after:-right-1 after:h-2.5 after:w-2.5 after:bg-[var(--accent)]">t<span className="text-[var(--accent)]">n</span></span>
+          <span className="flex flex-col leading-none"><span className="text-[18px] font-semibold tracking-[-.06em] text-[var(--foreground)]">trinetix</span><span className="mt-1.5 text-[8px] font-semibold uppercase tracking-[.17em] text-[var(--foreground-tertiary)]">Digital studio</span></span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
-          {NAV.map((item) => {
-            const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`));
-            return (
-              <Link key={item.href} href={item.href} aria-current={active ? "page" : undefined} className={`rounded-full px-3.5 py-2 text-[13.5px] font-medium transition-colors ${active ? "bg-[var(--accent-soft)] text-[var(--accent)]" : "text-[var(--foreground-secondary)] hover:bg-[var(--surface-subtle)] hover:text-[var(--foreground)]"}`}>
-                {item.name}
-              </Link>
-            );
+        <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
+          {links.map((link) => {
+            const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
+            return <Link key={link.href} href={link.href} aria-current={active ? "page" : undefined} className={`relative py-2 text-[12px] font-medium transition-colors after:absolute after:inset-x-0 after:-bottom-[2px] after:h-px after:origin-left after:scale-x-0 after:bg-[var(--accent)] after:transition-transform hover:text-[var(--accent)] hover:after:scale-x-100 ${active ? "text-[var(--accent)] after:scale-x-100" : "text-[var(--foreground-secondary)]"}`}>{link.label}</Link>;
           })}
         </nav>
 
-        <div className="hidden items-center gap-4 lg:flex">
-          <a href="tel:+917027782346" className="text-[12.5px] font-medium text-[var(--foreground-tertiary)] transition-colors hover:text-[var(--accent)]">+91 70277 82346</a>
-          <Link href="/contact" className="btn-primary !px-5 !py-3 text-[13px]">Get a free quote <ArrowUpRight className="h-4 w-4" aria-hidden /></Link>
+        <div className="hidden items-center gap-5 lg:flex">
+          <a href="tel:+917027782346" className="text-[11px] font-medium tracking-[.01em] text-[var(--foreground-tertiary)] hover:text-[var(--foreground)]">+91 70277 82346</a>
+          <Link href="/contact" className="group inline-flex items-center gap-2 bg-[var(--accent)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[.05em] text-white transition-colors hover:bg-[var(--accent-hover)]">Start a project <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></Link>
         </div>
 
-        <button type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-controls="mobile-nav" aria-label={open ? "Close menu" : "Open menu"} className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-white text-[var(--foreground)] transition-colors hover:bg-[var(--surface-subtle)] lg:hidden">
-          {open ? <X className="h-[19px] w-[19px]" /> : <Menu className="h-[19px] w-[19px]" />}
+        <button type="button" onClick={() => setMenuOpen((open) => !open)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} aria-controls="mobile-menu" className="flex h-10 w-10 items-center justify-center border border-[#d4cfc5] text-[var(--foreground)] lg:hidden">
+          {menuOpen ? <X className="h-[19px] w-[19px]" /> : <Menu className="h-[19px] w-[19px]" />}
         </button>
       </div>
 
-      {open && (
-        <div id="mobile-nav" className="absolute inset-x-0 top-[72px] border-t border-[var(--border-subtle)] bg-white px-5 pb-6 pt-4 shadow-xl lg:hidden">
-          <nav aria-label="Mobile" className="flex flex-col gap-1">
-            {NAV.map((item) => {
-              const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`));
-              return <Link key={item.href} href={item.href} aria-current={active ? "page" : undefined} className={`rounded-xl px-4 py-3.5 text-[15px] font-medium ${active ? "bg-[var(--accent-soft)] text-[var(--accent)]" : "text-[var(--foreground-secondary)] hover:bg-[var(--surface-subtle)]"}`}>{item.name}</Link>;
-            })}
-          </nav>
-          <div className="mt-4 grid grid-cols-2 gap-3">
-            <a href="tel:+917027782346" className="btn-secondary">Call us</a>
-            <Link href="/contact" className="btn-primary">Get a quote <ArrowUpRight className="h-4 w-4" /></Link>
-          </div>
-          <p className="mt-4 text-center text-[12px] text-[var(--foreground-quaternary)]">Tell us what you’re building. We’ll take it from there.</p>
-        </div>
-      )}
+      {menuOpen && <div className="fixed inset-0 top-[74px] z-40 bg-[#20241f] px-6 pb-8 pt-4 text-[#f4f1ea] lg:hidden" id="mobile-menu">
+        <p className="border-b border-white/15 pb-4 text-[9px] font-semibold uppercase tracking-[.16em] text-white/45">Navigation</p>
+        <nav aria-label="Mobile" className="mt-2">
+          {links.map((link, i) => <Link key={link.href} href={link.href} className="flex items-center justify-between border-b border-white/15 py-4 text-[28px] font-medium tracking-[-.05em] transition-colors hover:text-[#ef8b6e]"><span>{link.label}</span><span className="text-[10px] font-medium tracking-normal text-white/35">0{i + 1}</span></Link>)}
+        </nav>
+        <Link href="/contact" className="mt-7 flex items-center justify-between bg-[var(--accent)] px-5 py-4 text-[13px] font-semibold uppercase tracking-[.04em] text-white">Tell us about your project <ArrowUpRight className="h-4 w-4" /></Link>
+        <a href="tel:+917027782346" className="mt-5 inline-block text-[12px] text-white/60">+91 70277 82346</a>
+      </div>}
     </header>
   );
 }
