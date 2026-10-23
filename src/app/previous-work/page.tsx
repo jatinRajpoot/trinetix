@@ -37,7 +37,7 @@ const projects: Project[] = [
     category: "Healthcare",
     categoryLabel: "Multi-Specialty Hospital",
     description:
-      "Hospital portal — doctor directory, 24×7 helpline integration, appointment concierge, editorial responsive composition.",
+      "A hospital website with doctor information, emergency contact details, appointment requests and responsive layouts.",
     features: [
       "Doctor Directory & Timings",
       "24×7 Emergency Helpline Banner",
@@ -45,7 +45,7 @@ const projects: Project[] = [
       "Mobile-First Responsive Design",
     ],
     techStack: ["WordPress CMS", "SEO Optimized", "SSL Secured", "Fast Loading"],
-    status: "Live Commission",
+    status: "Live website",
     isFeatured: true,
   },
   {
@@ -56,7 +56,7 @@ const projects: Project[] = [
     category: "Healthcare",
     categoryLabel: "Clinic & Diagnostic Center",
     description:
-      "Diagnostic platform — lab services, consultations, patient guidance & inquiry routing, atelier-polished.",
+      "A diagnostic and consultation website with clear service information, patient guidance and a simple enquiry route.",
     features: [
       "Diagnostic Lab Service List",
       "Patient OPD Guidance",
@@ -64,7 +64,7 @@ const projects: Project[] = [
       "Quick Online Inquiry Form",
     ],
     techStack: ["WordPress", "Custom Styling", "Speed Optimized", "Mobile Ready"],
-    status: "Live Commission",
+    status: "Live website",
   },
   {
     id: "dr-parveen-lakra",
@@ -74,7 +74,7 @@ const projects: Project[] = [
     category: "Healthcare",
     categoryLabel: "Specialist Doctor Portfolio",
     description:
-      "Specialist portfolio — expertise, qualifications, testimonials & direct booking, crafted to reassure.",
+      "A specialist profile highlighting qualifications, treatments, patient feedback and ways to book.",
     features: [
       "Medical Qualifications Showcase",
       "Specialized Treatment Info",
@@ -82,7 +82,7 @@ const projects: Project[] = [
       "Direct Call & WhatsApp Connect",
     ],
     techStack: ["WordPress", "Healthcare Schema", "Fast CDN", "Custom UI"],
-    status: "Live Commission",
+    status: "Live website",
   },
   {
     id: "aneja-hospitals",
@@ -92,7 +92,7 @@ const projects: Project[] = [
     category: "Healthcare",
     categoryLabel: "Hospital & Diagnostic Facility",
     description:
-      "Hospital portal — multi-department navigation, OPD schedules, infrastructure showcase & inquiry flow.",
+      "A hospital website bringing departments, OPD schedules, facilities and patient enquiries together.",
     features: [
       "Multi-Department OPD Schedules",
       "Health Checkup Packages",
@@ -100,7 +100,7 @@ const projects: Project[] = [
       "Instant Inquiry Form",
     ],
     techStack: ["WordPress", "PHP Engine", "Security Hardened", "Responsive Layout"],
-    status: "Live Commission",
+    status: "Live website",
     isFeatured: true,
   },
   {
@@ -111,7 +111,7 @@ const projects: Project[] = [
     category: "Healthcare",
     categoryLabel: "Emergency & Critical Care",
     description:
-      "Emergency portal — rapid access, ICU & trauma details, specialist roster & maps, high-speed.",
+      "A hospital website that helps visitors find emergency contact, critical care information and directions.",
     features: [
       "Emergency Response Top Bar",
       "ICU & Critical Care Details",
@@ -119,7 +119,7 @@ const projects: Project[] = [
       "Google Maps Direction Link",
     ],
     techStack: ["WordPress CMS", "High Performance", "Mobile Optimization", "Custom Theme"],
-    status: "Live Commission",
+    status: "Live website",
   },
   {
     id: "nav-durga-realestate",
@@ -129,7 +129,7 @@ const projects: Project[] = [
     category: "Real Estate",
     categoryLabel: "Real Estate & Property Development",
     description:
-      "Corporate property atelier — residential & commercial listings, floor plans, profile & lead capture.",
+      "A property website for presenting residential and commercial projects, floor plans and enquiry options.",
     features: [
       "Property Project Portfolio",
       "Plot & Floor Plan Gallery",
@@ -137,7 +137,7 @@ const projects: Project[] = [
       "Corporate Profile Showcase",
     ],
     techStack: ["WordPress CMS", "High-Res Gallery", "Lead Automation", "SEO Enabled"],
-    status: "Live Commission",
+    status: "Live website",
     isFeatured: true,
   },
   {
@@ -148,7 +148,7 @@ const projects: Project[] = [
     category: "Hostinger Demos",
     categoryLabel: "Corporate Business Showcase",
     description:
-      "Staging on Hostinger Cloud — business layout, highlight cards & high-conversion composition.",
+      "A business website demo exploring a clear service layout, visual highlights and enquiry flow.",
     features: [
       "Staging Preview Environment",
       "Corporate Branding Structure",
@@ -156,7 +156,7 @@ const projects: Project[] = [
       "Hostinger Cloud Powered",
     ],
     techStack: ["WordPress", "Hostinger Cloud", "PHP 8.2", "Custom Theme"],
-    status: "Atelier Preview",
+    status: "Demo site",
   },
   {
     id: "hostinger-demo-2",
@@ -166,7 +166,7 @@ const projects: Project[] = [
     category: "Hostinger Demos",
     categoryLabel: "Service Showcase Staging",
     description:
-      "Staging — multi-tier catalogs, feedback forms, hero banners & cloud speed.",
+      "A service website demo with a tiered catalog, enquiry form and flexible content sections.",
     features: [
       "Interactive UI Elements",
       "Service Catalog Grid",
@@ -174,7 +174,7 @@ const projects: Project[] = [
       "Ultra Fast Cloud Hosting",
     ],
     techStack: ["WordPress", "Hostinger Cloud", "Speed Optimized", "Mobile First"],
-    status: "Atelier Preview",
+    status: "Demo site",
   },
 ];
 
@@ -216,21 +216,21 @@ export default function PreviousWorkPage() {
       <section className="mx-auto max-w-[1200px] px-6 lg:px-8 pt-10 sm:pt-12 pb-8">
         <div className="mx-auto max-w-[720px] text-center">
           <p className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--accent)]">
-            <Leaf className="h-3 w-3" /> Selected Works — Live atelier deliveries
+            <Leaf className="h-3 w-3" /> Selected work
           </p>
-          <h1 className="mt-3 text-[34px] font-semibold tracking-[-0.035em] leading-[0.92] text-[var(--foreground)] sm:text-[44px]">
-            Works, live.<br/><span className="font-normal italic text-[var(--foreground-tertiary)]">Quietly premium.</span>
+          <h1 className="mt-3 text-[34px] font-semibold tracking-[-0.035em] leading-[1.02] text-[var(--foreground)] sm:text-[48px]">
+            Real businesses.<br/><span className="font-normal text-[var(--accent)]">Real websites.</span>
           </h1>
           <p className="mx-auto mt-4 max-w-[58ch] text-[15px] leading-7 text-[var(--foreground-tertiary)]">
-            A curated atelier of commissions by <span className="font-semibold text-[var(--foreground)]">TriNetix Atelier</span> — hospital portals, doctor portfolios & property platforms. Responsive, fast, live.
+            See a selection of live websites and demo concepts we’ve built for healthcare and property businesses. Every project starts with the people it needs to serve.
           </p>
 
           <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-[640px] mx-auto">
             {[
-              { k: "8+", v: "Live commissions" },
-              { k: "100%", v: "Responsive" },
-              { k: "99.9%", v: "Uptime" },
-              { k: "24/7", v: "Atelier care" },
+              { k: "6", v: "Launched websites" },
+              { k: "2", v: "Demo concepts" },
+              { k: "2", v: "Industries" },
+              { k: "1:1", v: "Direct collaboration" },
             ].map((s) => (
               <div key={s.k} className="rounded-xl border border-[var(--accent-muted)] bg-white px-4 py-3 text-center shadow-sm">
                 <p className="text-[20px] font-semibold tracking-[-0.02em] text-[var(--accent)]">{s.k}</p>
@@ -270,7 +270,7 @@ export default function PreviousWorkPage() {
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--foreground-quaternary)]" />
             <input
               type="text"
-              placeholder="Search atelier works…"
+              placeholder="Search projects…"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="field-input !pl-9 !py-2.5 !rounded-full bg-[var(--accent-soft)] focus:bg-white"
@@ -279,7 +279,7 @@ export default function PreviousWorkPage() {
           </div>
         </div>
         <p className="mt-3 text-[12.5px] text-[var(--foreground-quaternary)]">
-          Showing <span className="font-semibold text-[var(--accent)]">{filteredProjects.length}</span> of {projects.length} commissions
+          Showing <span className="font-semibold text-[var(--accent)]">{filteredProjects.length}</span> of {projects.length} projects
           {activeFilter !== "All" && <> · Filter: <span className="font-medium text-[var(--foreground)]">{activeFilter}</span></>}
         </p>
       </section>
@@ -355,7 +355,7 @@ export default function PreviousWorkPage() {
                   href={`/contact?project=${encodeURIComponent(project.title)}`}
                   className="btn-secondary w-full justify-center bg-white"
                 >
-                  Commission similar
+                  Build something similar
                 </Link>
                 <p className="text-center text-[11px] text-[var(--foreground-quaternary)]">{project.status}</p>
               </div>
@@ -366,7 +366,7 @@ export default function PreviousWorkPage() {
         {filteredProjects.length === 0 && (
           <div className="mx-auto mt-12 max-w-[520px] rounded-2xl border border-[var(--border-subtle)] bg-white p-8 text-center">
             <Search className="mx-auto h-10 w-10 text-[var(--accent)]/20" />
-            <h3 className="mt-3 text-[15px] font-semibold">No atelier works found</h3>
+            <h3 className="mt-3 text-[15px] font-semibold">No projects found</h3>
             <p className="mt-1 text-[13.5px] leading-5 text-[var(--foreground-tertiary)]">Try a different filter or search.</p>
             <button onClick={() => { setActiveFilter("All"); setSearchQuery(""); }} className="btn-secondary mt-4">
               Reset filters
@@ -382,19 +382,19 @@ export default function PreviousWorkPage() {
           <div className="relative">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1">
               <Zap className="h-3.5 w-3.5 text-white/80" aria-hidden />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-white/80">Atelier commission</span>
+              <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-white/80">Let’s build yours</span>
             </div>
-            <h2 className="mt-4 text-[24px] font-semibold tracking-[-0.02em] text-white sm:text-[28px]">Want an atelier piece like these?</h2>
+            <h2 className="mt-4 text-[24px] font-semibold tracking-[-0.02em] text-white sm:text-[28px]">Want a website that works like these?</h2>
             <p className="mt-2 max-w-[56ch] text-[14px] leading-6 text-white/60">
-              Bespoke WordPress from <span className="font-semibold text-white">₹3,999</span> · Hospital & property ateliers · Android from ₹15k. Quietly premium, precisely scoped.
+              Business websites from <span className="font-semibold text-white">₹3,999</span>. We’ll help you plan the right pages, features and next steps.
             </p>
           </div>
           <div className="flex flex-wrap gap-3 shrink-0 relative">
             <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-[14px] font-semibold text-[var(--accent)] hover:bg-[var(--accent-soft)] transition-colors">
-              Begin commission <ArrowRight className="h-4 w-4" />
+              Plan my website <ArrowRight className="h-4 w-4" />
             </Link>
             <Link href="/pricing" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-[14px] font-medium text-white hover:bg-white/10 transition-colors">
-              View investment
+              See pricing
             </Link>
           </div>
         </div>

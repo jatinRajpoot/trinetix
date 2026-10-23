@@ -15,12 +15,12 @@ const geist = Geist({
 
 const siteUrl = "https://trinetix.in";
 const siteName = "TriNetix";
-const defaultTitle = "TriNetix — Premium Websites & Apps, Simple and Reliable";
+const defaultTitle = "TriNetix — Websites that help your business grow";
 const defaultDesc =
-  "TriNetix builds simple, premium WordPress sites, Android apps and student projects that are fast, clear and easy to manage. Work with us directly.";
+  "Get a professional website, web app or Android app built around your goals. Clear pricing, direct communication and support from planning to launch.";
 
 export const viewport: Viewport = {
-  themeColor: "#f9fbf8",
+  themeColor: "#f6f8fa",
   colorScheme: "light",
   width: "device-width",
   initialScale: 1,
@@ -28,7 +28,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: { default: defaultTitle, template: `%s — ${siteName} Atelier` },
+  title: { default: defaultTitle, template: `%s | ${siteName}` },
   description: defaultDesc,
   applicationName: siteName,
   authors: [{ name: "Jatin Rajput" }, { name: "Bharti Singh" }],
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: siteUrl,
-    siteName: `${siteName} Atelier`,
+    siteName,
     title: defaultTitle,
     description: defaultDesc,
   },
@@ -58,7 +58,7 @@ const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "TriNetix",
-  alternateName: "TriNetix Atelier",
+  alternateName: "TriNetix Digital Studio",
   url: siteUrl,
   logo: `${siteUrl}/logo.png`,
   description: defaultDesc,
@@ -81,7 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen bg-[var(--background)] text-[var(--foreground)] flex flex-col antialiased selection:bg-[var(--accent)] selection:text-white">
         <a href="#main" className="skip-link">Skip to content</a>
         <Header />
-        <main id="main" className="flex-grow pt-[64px]">{children}</main>
+        <main id="main" className="flex-grow pt-[72px]">{children}</main>
         <Footer />
         <WhatsAppFloat />
       </body>

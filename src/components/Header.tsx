@@ -1,18 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 
 const NAV = [
-  { name: "Atelier", href: "/about" },
-  { name: "Capabilities", href: "/features" },
-  { name: "Works", href: "/previous-work" },
-  { name: "Investment", href: "/pricing" },
-  { name: "Journal", href: "/blog" },
-  { name: "Contact", href: "/contact" },
+  { name: "Services", href: "/features" },
+  { name: "Our work", href: "/previous-work" },
+  { name: "Pricing", href: "/pricing" },
+  { name: "About", href: "/about" },
+  { name: "Insights", href: "/blog" },
 ];
 
 export default function Header() {
@@ -21,7 +19,8 @@ export default function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -31,101 +30,55 @@ export default function Header() {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
+  useEffect(() => setOpen(false), [pathname]);
+
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
-        scrolled
-          ? "bg-white/85 backdrop-blur-xl border-[var(--border-subtle)] shadow-[0_4px_20px_rgba(18,32,25,0.06)]"
-          : "bg-[#f9fbf8]/70 backdrop-blur-xl border-transparent"
-      }`}
-    >
-      <div className="mx-auto flex h-[64px] max-w-[1200px] items-center justify-between px-6 lg:px-8">
-        {/* Brand — premium */}
-        <Link href="/" className="flex items-center gap-3 group" aria-label="TriNetix Atelier home">
-          <span className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-[11px] bg-[var(--accent)] ring-1 ring-black/10 shadow-sm">
-            <Image src="/logo.png" alt="" width={36} height={36} className="h-9 w-9 object-cover scale-[1.35] object-left opacity-95" priority />
-          </span>
+    <header className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-200 ${scrolled ? "border-[var(--border-subtle)] bg-white/95 shadow-[0_6px_24px_rgba(16,32,51,.06)] backdrop-blur-xl" : "border-transparent bg-white/90 backdrop-blur-xl"}`}>
+      <div className="mx-auto flex h-[72px] max-w-[1280px] items-center justify-between px-5 sm:px-7 lg:px-10">
+        <Link href="/" className="group inline-flex shrink-0 items-center gap-2.5" aria-label="TriNetix home">
+          <span className="flex h-10 w-10 items-center justify-center rounded-[13px] bg-[var(--accent)] text-[19px] font-bold tracking-[-.08em] text-white shadow-[0_5px_12px_rgba(36,89,211,.24)]">T<span className="text-[#9bb8ff]">N</span></span>
           <span className="flex flex-col leading-none">
-            <span className="text-[18.5px] font-semibold tracking-[-0.025em] text-[var(--foreground)]">TriNetix</span>
-            <span className="flex items-center gap-1 text-[10px] font-semibold tracking-[0.14em] text-[var(--foreground-quaternary)] uppercase">
-              <Sparkles className="h-3 w-3 text-[var(--gold)]" aria-hidden /> Atelier
-            </span>
+            <span className="text-[18px] font-bold tracking-[-.055em] text-[var(--foreground)]">TriNetix</span>
+            <span className="mt-1 text-[9px] font-semibold uppercase tracking-[.16em] text-[var(--foreground-quaternary)]">Digital studio</span>
           </span>
         </Link>
 
-        {/* Desktop nav — pill, premium hover */}
-        <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
-          {NAV.map((l) => {
-            const active = pathname === l.href || (l.href !== "/" && pathname.startsWith(l.href));
+        <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
+          {NAV.map((item) => {
+            const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`));
             return (
-              <Link
-                key={l.href}
-                href={l.href}
-                aria-current={active ? "page" : undefined}
-                className={`rounded-full px-3.5 py-2 text-[13px] font-medium tracking-[-0.01em] transition-all ${
-                  active ? "bg-[var(--accent)] text-white shadow-sm" : "text-[var(--foreground-secondary)] hover:bg-[var(--accent-subtle)] hover:text-[var(--accent)]"
-                }`}
-              >
-                {l.name}
+              <Link key={item.href} href={item.href} aria-current={active ? "page" : undefined} className={`rounded-full px-3.5 py-2 text-[13.5px] font-medium transition-colors ${active ? "bg-[var(--accent-soft)] text-[var(--accent)]" : "text-[var(--foreground-secondary)] hover:bg-[var(--surface-subtle)] hover:text-[var(--foreground)]"}`}>
+                {item.name}
               </Link>
             );
           })}
         </nav>
 
-        {/* Desktop actions */}
-        <div className="hidden items-center gap-2.5 md:flex">
-          <Link href="/contact" className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[13px] font-medium text-[var(--foreground-secondary)] hover:bg-[var(--surface-subtle)] hover:text-[var(--accent)] transition-colors">
-            Contact us
-            <ArrowUpRight className="h-3.5 w-3.5 opacity-60" aria-hidden />
-          </Link>
-          <Link href="/pricing" className="btn-primary text-[13px] !px-5 !py-2.5">
-            Work with us
-          </Link>
+        <div className="hidden items-center gap-4 lg:flex">
+          <a href="tel:+917027782346" className="text-[12.5px] font-medium text-[var(--foreground-tertiary)] transition-colors hover:text-[var(--accent)]">+91 70277 82346</a>
+          <Link href="/contact" className="btn-primary !px-5 !py-3 text-[13px]">Get a free quote <ArrowUpRight className="h-4 w-4" aria-hidden /></Link>
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          aria-label={open ? "Close menu" : "Open menu"}
-          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-white text-[var(--foreground-secondary)] md:hidden hover:border-[var(--accent-muted)] hover:bg-[var(--accent-soft)] transition-colors"
-        >
-          {open ? <X className="h-[18px] w-[18px]" /> : <Menu className="h-[18px] w-[18px]" />}
+        <button type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-controls="mobile-nav" aria-label={open ? "Close menu" : "Open menu"} className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-white text-[var(--foreground)] transition-colors hover:bg-[var(--surface-subtle)] lg:hidden">
+          {open ? <X className="h-[19px] w-[19px]" /> : <Menu className="h-[19px] w-[19px]" />}
         </button>
       </div>
 
-      {/* Mobile drawer */}
       {open && (
-        <div id="mobile-nav" className="md:hidden">
-          <div className="absolute inset-0 top-[64px] bg-[#122019]/10 backdrop-blur-sm" onClick={() => setOpen(false)} aria-hidden />
-          <div className="absolute inset-x-0 top-[64px] border-t border-[var(--border-subtle)] bg-white px-6 py-6 shadow-2xl animate-[slideDown_180ms_ease]">
-            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--gold)]">TriNetix Atelier — Simple, premium websites</p>
-            <nav className="flex flex-col gap-1">
-              {NAV.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className={`rounded-xl px-4 py-3 text-[15px] font-medium ${
-                    pathname === l.href ? "bg-[var(--accent)] text-white" : "text-[var(--foreground)] hover:bg-[var(--accent-soft)]"
-                  }`}
-                >
-                  {l.name}
-                </Link>
-              ))}
-              <Link href="/docs" onClick={() => setOpen(false)} className="rounded-xl px-4 py-3 text-[15px] font-medium text-[var(--foreground)] hover:bg-[var(--accent-soft)]">Documentation</Link>
-              <Link href="/faq" onClick={() => setOpen(false)} className="rounded-xl px-4 py-3 text-[15px] font-medium text-[var(--foreground)] hover:bg-[var(--accent-soft)]">FAQ</Link>
-            </nav>
-            <div className="mt-6 grid grid-cols-2 gap-3">
-              <Link href="/contact" onClick={() => setOpen(false)} className="btn-secondary justify-center w-full">Contact</Link>
-              <Link href="/pricing" onClick={() => setOpen(false)} className="btn-primary justify-center w-full">Get started</Link>
-            </div>
-            <p className="mt-4 text-center text-[11px] leading-4 text-[var(--foreground-quaternary)]">Direct support · No middlemen<br/>Reply within 2–4 hours</p>
+        <div id="mobile-nav" className="absolute inset-x-0 top-[72px] border-t border-[var(--border-subtle)] bg-white px-5 pb-6 pt-4 shadow-xl lg:hidden">
+          <nav aria-label="Mobile" className="flex flex-col gap-1">
+            {NAV.map((item) => {
+              const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`));
+              return <Link key={item.href} href={item.href} aria-current={active ? "page" : undefined} className={`rounded-xl px-4 py-3.5 text-[15px] font-medium ${active ? "bg-[var(--accent-soft)] text-[var(--accent)]" : "text-[var(--foreground-secondary)] hover:bg-[var(--surface-subtle)]"}`}>{item.name}</Link>;
+            })}
+          </nav>
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            <a href="tel:+917027782346" className="btn-secondary">Call us</a>
+            <Link href="/contact" className="btn-primary">Get a quote <ArrowUpRight className="h-4 w-4" /></Link>
           </div>
+          <p className="mt-4 text-center text-[12px] text-[var(--foreground-quaternary)]">Tell us what you’re building. We’ll take it from there.</p>
         </div>
       )}
-      <style>{`@keyframes slideDown{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}`}</style>
     </header>
   );
 }

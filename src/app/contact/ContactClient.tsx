@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Mail, Phone, Clock, Send, CheckCircle2, AlertCircle, ChevronDown, Leaf } from "lucide-react";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 
@@ -14,10 +14,29 @@ export default function ContactClient() {
   const [feedback, setFeedback] = useState<{ success: boolean; text: string } | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const service = params.get("service");
+    const type = params.get("type");
+    const project = params.get("project");
+    if (project) setMessage(`I’m interested in a website like ${project}.`);
+    if (type === "student") {
+      setServiceType("Student Project & Report — ₹3,000");
+      setIsStudent(true);
+    }
+    else if (service === "CustomProject") setServiceType("Custom Website — from ₹8,000");
+    else if (service === "AndroidApp") setServiceType("Android App — from ₹15,000");
+    else if (service === "WordPress") setServiceType("WordPress Website — from ₹3,999");
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !email.trim() || !message.trim()) {
       setFeedback({ success: false, text: "Please fill in all required fields." });
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      setFeedback({ success: false, text: "Please enter a valid email address." });
       return;
     }
     const text = encodeURIComponent(
@@ -29,10 +48,10 @@ export default function ContactClient() {
       `*Student:* ${isStudent ? "Yes" : "No"}\n\n` +
       `*Message:* ${message}`
     );
-    window.open(`https://wa.me/917027782346?text=${text}`, "_blank");
+    window.open(`https://wa.me/917027782346?text=${text}`, "_blank", "noopener,noreferrer");
     setFeedback({
       success: true,
-      text: `Thank you ${name}! Redirecting you to WhatsApp to send your inquiry...`,
+      text: `Thanks, ${name}. WhatsApp opened with your message ready. Tap Send there to complete your enquiry.`,
     });
   };
 
@@ -84,9 +103,9 @@ export default function ContactClient() {
             </label>
             <div><label htmlFor="c-msg" className="field-label">Message *</label><textarea id="c-msg" required rows={4} value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Tell us what you need, timeline or budget…" className="field-input resize-none" /></div>
             <button type="submit" className="btn-primary w-full justify-center">
-              <Send className="h-4 w-4" aria-hidden /> Send message
+              <Send className="h-4 w-4" aria-hidden /> Continue to WhatsApp
             </button>
-            <p className="text-center text-[11px] text-[var(--foreground-quaternary)]">By sending, you agree to our <a href="/privacy" className="underline underline-offset-4 hover:text-[var(--accent)]">Privacy Policy</a>.</p>
+            <p className="text-center text-[11px] text-[var(--foreground-quaternary)]">WhatsApp will open with your message ready—you’ll send it from there. See our <a href="/privacy" className="underline underline-offset-4 hover:text-[var(--accent)]">Privacy Policy</a>.</p>
           </form>
         </div>
 

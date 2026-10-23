@@ -2,7 +2,7 @@ export default function LegalLayout({ title, updated, children }: { title: strin
   return (
     <div className="mx-auto max-w-[720px] px-6 lg:px-8 pb-16">
       <div className="pt-10 sm:pt-12">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--accent)]">Atelier — Legal</p>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--accent)]">TriNetix — Legal</p>
         <h1 className="mt-2 text-[28px] font-semibold tracking-[-0.025em] text-[var(--foreground)] sm:text-[32px]">{title}</h1>
         <p className="mt-1 text-[12px] text-[var(--foreground-quaternary)]">Last updated: {updated}</p>
       </div>

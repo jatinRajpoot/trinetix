@@ -27,9 +27,9 @@ export default function FaqPage() {
     <div className="mx-auto max-w-[800px] px-6 lg:px-8 pb-16">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <section className="pt-10 text-center sm:pt-12">
-        <p className="inline-flex items-center justify-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--accent)]"><Leaf className="h-3 w-3" /> FAQ</p>
-        <h1 className="mt-3 text-[34px] font-semibold tracking-[-0.035em] leading-[0.92] text-[var(--foreground)] sm:text-[44px]">Questions, <span className="font-normal italic text-[var(--foreground-tertiary)]">answered simply.</span></h1>
-        <p className="mx-auto mt-4 max-w-[58ch] text-[15px] leading-7 text-[var(--foreground-tertiary)]">Can’t find your answer? Just contact us — we reply quickly.</p>
+        <p className="section-kicker justify-center"><Leaf className="h-3.5 w-3.5" /> Frequently asked questions</p>
+        <h1 className="mt-3 text-[36px] font-semibold leading-[1.04] tracking-[-.055em] text-[var(--foreground)] sm:text-[48px]">Clear answers,<br/><span className="text-[var(--accent)]">before you get started.</span></h1>
+        <p className="mx-auto mt-4 max-w-[58ch] text-[15px] leading-7 text-[var(--foreground-tertiary)]">Here are a few things people often ask about projects, pricing and support.</p>
       </section>
       <div className="mt-8">
         <FaqClient faqs={faqs} />

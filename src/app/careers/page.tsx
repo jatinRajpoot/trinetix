@@ -2,21 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Leaf, Sparkles } from "lucide-react";
 
-export const metadata: Metadata = { title: "Atelier — Careers", description: "Join TriNetix Atelier — small team, exacting craft. Future collaborator openings." };
+export const metadata: Metadata = { title: "Careers", description: "Learn how TriNetix works and get in touch about future freelance collaborations." };
 
 export default function CareersPage() {
   return (
     <div className="mx-auto max-w-[800px] px-6 lg:px-8 pb-16">
       <section className="pt-10 sm:pt-12">
         <p className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--accent)]"><Leaf className="h-3 w-3" /> Careers</p>
-        <h1 className="mt-3 text-[34px] font-semibold tracking-[-0.035em] leading-[0.92] text-[var(--foreground)] sm:text-[44px]">Small by design.<br/><span className="font-normal italic text-[var(--foreground-tertiary)]">Exacting by choice.</span></h1>
+        <h1 className="mt-3 text-[34px] font-semibold leading-[1.04] tracking-[-.055em] text-[var(--foreground)] sm:text-[48px]">Work with a small, focused digital team.</h1>
         <p className="mt-4 max-w-[60ch] text-[15px] leading-7 text-[var(--foreground-tertiary)]">
-          TriNetix is a small, focused team. We aren’t hiring right now — but we sometimes work with skilled freelancers.
+          We aren’t hiring for a full-time position right now, but we’re open to hearing from skilled independent designers and developers.
         </p>
       </section>
 
       <section className="mt-8 rounded-2xl border border-[var(--border-subtle)] bg-white p-6 sm:p-7">
-        <h2 className="text-[14px] font-semibold flex items-center gap-1.5"><Sparkles className="h-4 w-4 text-[var(--gold)]" /> How we work</h2>
+        <h2 className="text-[14px] font-semibold flex items-center gap-1.5"><Sparkles className="h-4 w-4 text-[var(--gold)]" /> What matters to us</h2>
         <ul className="mt-3 list-disc pl-5 space-y-1.5 text-[13.5px] leading-6 text-[var(--foreground-tertiary)]">
           <li>One clear owner for each project.</li>
           <li>Clear price, clear timeline, live preview.</li>

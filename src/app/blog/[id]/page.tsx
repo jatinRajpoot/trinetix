@@ -10,7 +10,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
   const a = getBlogById(id);
-  if (!a) return { title: "Atelier Note — TriNetix" };
+  if (!a) return { title: "Article | TriNetix" };
   return { title: a.title, description: a.excerpt.slice(0, 150) };
 }
 
@@ -30,7 +30,7 @@ export default async function BlogDetail({ params }: { params: Promise<{ id: str
     <div className="mx-auto max-w-[720px] px-6 lg:px-8 pb-16">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <Link href="/blog" className="inline-flex items-center gap-1.5 pt-8 text-[13px] font-medium text-[var(--foreground-tertiary)] hover:text-[var(--accent)]">
-        <ArrowLeft className="h-4 w-4" aria-hidden /> Back to journal
+        <ArrowLeft className="h-4 w-4" aria-hidden /> Back to insights
       </Link>
 
       <article className="mt-6 rounded-2xl border border-[var(--border-subtle)] bg-white p-6 sm:p-8">
@@ -47,8 +47,8 @@ export default async function BlogDetail({ params }: { params: Promise<{ id: str
           {article.content.map((para, i) => <p key={i}>{para}</p>)}
         </div>
         <div className="mt-8 flex items-center justify-between rounded-xl border border-[var(--accent-muted)] bg-[var(--accent-soft)] p-4">
-          <div><p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--accent)] flex items-center gap-1"><Leaf className="h-3 w-3" /> Author</p><p className="text-[14px] font-semibold">{article.author}</p><p className="text-[12px] text-[var(--foreground-tertiary)]">Founder @ TriNetix Atelier</p></div>
-          <Link href="/contact" className="btn-primary text-[13px]">Contact atelier</Link>
+          <div><p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--accent)] flex items-center gap-1"><Leaf className="h-3 w-3" /> Author</p><p className="text-[14px] font-semibold">{article.author}</p><p className="text-[12px] text-[var(--foreground-tertiary)]">TriNetix digital studio</p></div>
+          <Link href="/contact" className="btn-primary text-[13px]">Start a project</Link>
         </div>
       </article>
     </div>

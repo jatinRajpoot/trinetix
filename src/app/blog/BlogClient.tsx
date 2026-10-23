@@ -22,7 +22,7 @@ export default function BlogClient() {
       <div className="mx-auto mt-6 flex max-w-[560px] items-center gap-2">
         <div className="relative flex-1">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--foreground-quaternary)]" aria-hidden />
-          <input value={q} onChange={e=>setQ(e.target.value)} placeholder="Search atelier notes" aria-label="Search articles" className="field-input pl-9 !rounded-full bg-white" />
+          <input value={q} onChange={e=>setQ(e.target.value)} placeholder="Search articles" aria-label="Search articles" className="field-input pl-9 !rounded-full bg-white" />
         </div>
       </div>
       <div className="mt-4 flex justify-center gap-1.5 flex-wrap">
