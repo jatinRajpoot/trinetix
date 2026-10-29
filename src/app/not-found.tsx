@@ -3,7 +3,7 @@ import { Home, ArrowRight, Leaf } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <div className="mx-auto max-w-[720px] px-6 lg:px-8 flex min-h-[60vh] flex-col items-center justify-center py-16 text-center">
+    <div className="state-page flex flex-col items-center justify-center text-center">
       <p className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--accent)]"><Leaf className="h-3 w-3" /> 404 — Not found</p>
       <h1 className="mt-3 text-[56px] font-semibold tracking-[-0.04em] leading-none text-[var(--foreground)]">404</h1>
       <h2 className="mt-2 text-[18px] font-semibold tracking-[-0.015em]">This page doesn’t exist.</h2>
@@ -15,7 +15,7 @@ export default function NotFound() {
       <div className="mt-8 grid w-full grid-cols-1 gap-3 sm:grid-cols-3 text-left">
         {[
           { t: "Pricing", d: "Simple plans", href: "/pricing" },
-          { t: "Our Work", d: "Live projects", href: "/previous-work" },
+          { t: "Our clients", d: "Their live websites", href: "/#clients" },
           { t: "Contact Us", d: "Work with us", href: "/contact" },
         ].map((c) => (
           <Link key={c.href} href={c.href} className="card p-4 hover:border-[var(--accent-muted)] transition-colors">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import FaqClient from "./FaqClient";
 import { ArrowRight } from "lucide-react";
+import PageHeading from "@/components/PageHeading";
 
 export const metadata: Metadata = {
   title: "Frequently asked questions",
@@ -24,8 +25,8 @@ export default function FaqPage() {
   return (
     <div className="bg-[var(--background)]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}/>
-      <section className="bg-[#20241f] text-[#f4f1ea]"><div className="mx-auto max-w-[1440px] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-20"><p className="section-kicker !text-[#ef8b6e]">Before you get started</p><h1 className="mt-5 max-w-[800px] text-[44px] font-medium leading-[.97] tracking-[-.075em] sm:text-[62px]">Good questions deserve straight answers.</h1><p className="mt-4 max-w-[600px] text-[13px] leading-7 text-white/65 sm:text-[14px]">A few things people ask when they’re choosing a team for their website or app.</p></div></section>
-      <section className="mx-auto grid max-w-[1440px] gap-8 px-5 py-10 sm:px-8 sm:py-14 lg:grid-cols-[.58fr_1.42fr] lg:gap-16 lg:px-12 lg:py-20"><div><p className="section-kicker">Still deciding?</p><h2 className="mt-3 text-[29px] font-medium leading-[1.02] tracking-[-.06em] sm:text-[37px]">We’ll help you figure out what to ask.</h2><p className="mt-3 max-w-[340px] text-[12px] leading-6 text-[var(--foreground-tertiary)]">Every business is different. Tell us what you’re working on and we’ll give you a direct answer.</p><Link href="/contact" className="mt-5 inline-flex items-center gap-2 border-b border-[var(--accent)] pb-1 text-[10px] font-semibold uppercase tracking-[.09em] text-[var(--accent)]">Ask us directly <ArrowRight className="h-3.5 w-3.5"/></Link></div><FaqClient faqs={faqs}/></section>
+      <PageHeading label="Before we make something together" title={<>Good questions.<br/>Straight answers.</>} description="A few things people ask when they’re choosing a team for their website or app. Timelines, pricing, ownership, and everything in between."/>
+      <section className="site-container faq-content"><div><h2>Still figuring<br/>things out?</h2><p>Every business is different. Tell us what you’re working on and we’ll help you find a clear next step.</p><Link href="/contact" className="text-link">Ask us directly <ArrowRight size={17}/></Link></div><div className="faq-accordion"><FaqClient faqs={faqs}/></div></section>
     </div>
   );
 }

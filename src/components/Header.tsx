@@ -1,66 +1,55 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, X } from "lucide-react";
 
 const links = [
-  { label: "Work", href: "/previous-work" },
+  { label: "Home", href: "/" },
+  { label: "Our work", href: "/#clients" },
   { label: "Services", href: "/features" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Studio", href: "/about" },
-  { label: "Notes", href: "/blog" },
+  { label: "The studio", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  useEffect(() => { setMenuOpen(false); }, [pathname]);
   useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
-
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   useEffect(() => {
     if (!menuOpen) return;
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = previous; };
+    menuRef.current?.querySelector<HTMLAnchorElement>("a")?.focus();
+    function onKey(event: KeyboardEvent) {
+      if (event.key === "Escape") { setMenuOpen(false); toggleRef.current?.focus(); }
+      if (event.key !== "Tab") return;
+      const items = [toggleRef.current, ...Array.from(menuRef.current?.querySelectorAll<HTMLAnchorElement>("a") ?? [])].filter((item): item is HTMLButtonElement | HTMLAnchorElement => item !== null);
+      const first = items[0], last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => { document.body.style.overflow = previous; window.removeEventListener("keydown", onKey); };
   }, [menuOpen]);
 
-  return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-[#ded9cf] bg-[#f4f1ea]/95 backdrop-blur-sm">
-      <div className="mx-auto flex h-[74px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
-        <Link href="/" className="group flex items-center gap-3" aria-label="TriNetix home">
-          <span className="relative flex h-9 w-9 items-center justify-center border border-[#242821] text-[15px] font-black tracking-[-.12em] text-[#242821] after:absolute after:-bottom-1 after:-right-1 after:h-2.5 after:w-2.5 after:bg-[var(--accent)]">t<span className="text-[var(--accent)]">n</span></span>
-          <span className="flex flex-col leading-none"><span className="text-[18px] font-semibold tracking-[-.06em] text-[var(--foreground)]">trinetix</span><span className="mt-1.5 text-[8px] font-semibold uppercase tracking-[.17em] text-[var(--foreground-tertiary)]">Digital studio</span></span>
-        </Link>
-
-        <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
-          {links.map((link) => {
-            const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
-            return <Link key={link.href} href={link.href} aria-current={active ? "page" : undefined} className={`relative py-2 text-[12px] font-medium transition-colors after:absolute after:inset-x-0 after:-bottom-[2px] after:h-px after:origin-left after:scale-x-0 after:bg-[var(--accent)] after:transition-transform hover:text-[var(--accent)] hover:after:scale-x-100 ${active ? "text-[var(--accent)] after:scale-x-100" : "text-[var(--foreground-secondary)]"}`}>{link.label}</Link>;
-          })}
-        </nav>
-
-        <div className="hidden items-center gap-5 lg:flex">
-          <a href="tel:+917206382346" className="text-[11px] font-medium tracking-[.01em] text-[var(--foreground-tertiary)] hover:text-[var(--foreground)]">+91 72063 82346</a>
-          <Link href="/contact" className="group inline-flex items-center gap-2 bg-[var(--accent)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[.05em] text-white transition-colors hover:bg-[var(--accent-hover)]">Start a project <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></Link>
-        </div>
-
-        <button type="button" onClick={() => setMenuOpen((open) => !open)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} aria-controls="mobile-menu" className="flex h-10 w-10 items-center justify-center border border-[#d4cfc5] text-[var(--foreground)] lg:hidden">
-          {menuOpen ? <X className="h-[19px] w-[19px]" /> : <Menu className="h-[19px] w-[19px]" />}
-        </button>
-      </div>
-
-      {menuOpen && <div className="fixed inset-0 top-[74px] z-40 bg-[#20241f] px-6 pb-8 pt-4 text-[#f4f1ea] lg:hidden" id="mobile-menu">
-        <p className="border-b border-white/15 pb-4 text-[9px] font-semibold uppercase tracking-[.16em] text-white/45">Navigation</p>
-        <nav aria-label="Mobile" className="mt-2">
-          {links.map((link, i) => <Link key={link.href} href={link.href} className="flex items-center justify-between border-b border-white/15 py-4 text-[28px] font-medium tracking-[-.05em] transition-colors hover:text-[#ef8b6e]"><span>{link.label}</span><span className="text-[10px] font-medium tracking-normal text-white/35">0{i + 1}</span></Link>)}
-        </nav>
-        <Link href="/contact" className="mt-7 flex items-center justify-between bg-[var(--accent)] px-5 py-4 text-[13px] font-semibold uppercase tracking-[.04em] text-white">Tell us about your project <ArrowUpRight className="h-4 w-4" /></Link>
-        <a href="tel:+917206382346" className="mt-5 inline-block text-[12px] text-white/60">+91 72063 82346</a>
-      </div>}
+  const light = (pathname === "/" && !scrolled) || menuOpen;
+  return <>
+    <header className={`awake-header${light?" on-red":""}${scrolled&&!menuOpen?" is-scrolled":""}${menuOpen?" menu-is-open":""}`}>
+      <Link href="/" onClick={()=>setMenuOpen(false)} className="awake-brand" aria-label="TriNetix home">trinetix<span aria-hidden="true">✳</span></Link>
+      <nav className="awake-desktop-nav" aria-label="Primary"><Link href="/#clients">Work</Link><Link href="/features" aria-current={pathname==="/features"?"page":undefined}>Services</Link><Link href="/about" aria-current={pathname==="/about"?"page":undefined}>Studio</Link></nav>
+      <div className="awake-header-actions"><Link className="nav-contact" href="/contact" onClick={()=>setMenuOpen(false)}>Let’s talk <ArrowUpRight size={16}/></Link><button ref={toggleRef} className="awake-menu-toggle" type="button" onClick={()=>setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-controls="site-menu" aria-label={menuOpen?"Close menu":"Open menu"}><span>{menuOpen?"Close":"Menu"}</span>{menuOpen?<X size={18}/>:<span className="menu-lines" aria-hidden="true"><i/><i/></span>}</button></div>
     </header>
-  );
+    {menuOpen&&<div className="awake-menu" id="site-menu" ref={menuRef} role="dialog" aria-modal="true" aria-label="Site navigation"><div className="awake-menu-content"><nav aria-label="All pages">{links.map(link=><Link key={link.href} href={link.href} onClick={()=>setMenuOpen(false)} aria-current={pathname===link.href?"page":undefined}>{link.label}<ArrowUpRight strokeWidth={1}/></Link>)}</nav><aside><p>Have something in mind?</p><a href="mailto:Support@trinetix.in">Support@trinetix.in<ArrowUpRight size={18}/></a><div><Link href="/pricing" onClick={()=>setMenuOpen(false)}>Pricing</Link><Link href="/blog" onClick={()=>setMenuOpen(false)}>Journal</Link><Link href="/faq" onClick={()=>setMenuOpen(false)}>FAQs</Link><Link href="/careers" onClick={()=>setMenuOpen(false)}>Careers</Link></div><span>Independent studio.<br/>India & everywhere.</span></aside></div></div>}
+  </>;
 }

@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Syne } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import WhatsAppFloat from "@/components/WhatsAppFloat";
+import SiteMotion from "@/components/SiteMotion";
 import "./globals.css";
 
 const geist = Geist({
@@ -13,14 +13,16 @@ const geist = Geist({
   preload: true,
 });
 
+const syne = Syne({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-space", display: "swap" });
+
 const siteUrl = "https://trinetix.in";
 const siteName = "TriNetix";
-const defaultTitle = "TriNetix — Clear, useful websites for growing businesses";
+const defaultTitle = "TriNetix — Websites with a point of view.";
 const defaultDesc =
-  "Websites and apps designed to help customers understand what you do, trust your business and take the next step. Clear scope, honest pricing and direct support.";
+  "An independent digital studio in India creating distinctive websites, custom web apps and Android experiences. Tell us about your next idea on WhatsApp.";
 
 export const viewport: Viewport = {
-  themeColor: "#f4f1ea",
+  themeColor: "#ec0038",
   colorScheme: "light",
   width: "device-width",
   initialScale: 1,
@@ -30,6 +32,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: defaultTitle, template: `%s | ${siteName}` },
   description: defaultDesc,
+  icons: { icon: "/icon.svg" },
   applicationName: siteName,
   authors: [{ name: "Jatin Rajput" }, { name: "Bharti Singh" }],
   creator: siteName,
@@ -46,7 +49,7 @@ export const metadata: Metadata = {
     description: defaultDesc,
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: defaultTitle,
     description: defaultDesc,
   },
@@ -60,7 +63,6 @@ const orgSchema = {
   name: "TriNetix",
   alternateName: "TriNetix Digital Studio",
   url: siteUrl,
-  logo: `${siteUrl}/logo.png`,
   description: defaultDesc,
   contactPoint: {
     "@type": "ContactPoint",
@@ -73,17 +75,17 @@ const orgSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geist.variable} scroll-smooth`}>
+    <html lang="en" className={`${geist.variable} ${syne.variable} scroll-smooth`}>
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
       </head>
       <body className="min-h-screen bg-[var(--background)] text-[var(--foreground)] flex flex-col antialiased selection:bg-[var(--accent)] selection:text-white">
         <a href="#main" className="skip-link">Skip to content</a>
+        <SiteMotion />
         <Header />
-        <main id="main" className="flex-grow pt-[74px]">{children}</main>
+        <main id="main" className="site-main flex-grow">{children}</main>
         <Footer />
-        <WhatsAppFloat />
       </body>
     </html>
   );
