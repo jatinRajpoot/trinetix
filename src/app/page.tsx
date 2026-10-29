@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Plus, Star } from "lucide-react";
 import SelectedWork from "@/components/SelectedWork";
+import HomeMotion from "@/components/HomeMotion";
+import HeroTypewriter from "@/components/HeroTypewriter";
 import { TESTIMONIALS } from "@/data/testimonials";
 
 const services = [
@@ -12,9 +14,19 @@ const services = [
 export default function HomePage() {
   return (
     <div className="awake-home">
+      <HomeMotion />
       <section className="awake-hero panel" aria-labelledby="hero-title">
-        <h1 id="hero-title" className="awake-headline"><span><span>We make</span></span><span><span>digital</span><span className="hero-spark" aria-hidden="true">✳</span></span><span><span>feel <span className="hero-last-word">different.</span></span></span></h1>
-        <div className="hero-lower"><a href="#clients" className="hero-explore"><span className="round-arrow"><ArrowDown size={23} strokeWidth={1.5} /></span> Scroll to discover</a><p>We’re TriNetix. A small digital studio building distinctive websites and useful apps for businesses ready for what’s next.</p></div>
+        <h1 id="hero-title" className="awake-headline" aria-label="We make digital feel different. We make digital feel premium.">
+          <span aria-hidden="true"><span>We make</span></span>
+          <span aria-hidden="true"><span>digital</span><span className="hero-spark">✳</span></span>
+          <span aria-hidden="true"><span>feel <HeroTypewriter /></span></span>
+        </h1>
+        <div className="hero-lower">
+          <a href="#clients" className="hero-explore"><span className="round-arrow"><ArrowDown size={23} strokeWidth={1.5} /></span> Scroll to discover</a>
+          <div className="hero-intro">
+            <p>We’re TriNetix. A small digital studio building distinctive websites and useful apps for businesses ready for what’s next.</p>
+          </div>
+        </div>
         <div className="hero-meta"><span>Based in India. Building everywhere.</span><a href="mailto:Support@trinetix.in">Say hello: Support@trinetix.in <ArrowUpRight size={15} /></a></div>
       </section>
       <section className="awake-statement panel" aria-labelledby="statement-title"><span className="statement-note">Good people. Thoughtful work.</span><h2 id="statement-title">Your business has<br />something to say.<br />We make sure the<br />world feels it.</h2><div className="statement-bottom"><span className="statement-flower" aria-hidden="true">✳</span><p>Design with a point of view. Development with a purpose. One close-knit team, from the first conversation to the final little detail.</p><Link href="/about" className="circle-link" aria-label="Meet the studio"><ArrowUpRight size={30} strokeWidth={1.3} /></Link></div></section>
