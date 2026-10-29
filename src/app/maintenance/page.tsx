@@ -6,7 +6,7 @@ export const metadata = { title: "Maintenance", robots: { index: false, follow: 
 
 export default function MaintenancePage() {
   return (
-    <div className="mx-auto max-w-[720px] px-6 lg:px-8 flex min-h-[60vh] flex-col items-center justify-center py-16 text-center">
+    <div className="state-page flex flex-col items-center justify-center text-center">
       <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--accent-muted)] bg-[var(--accent-soft)]"><Wrench className="h-5 w-5 text-[var(--accent)]" aria-hidden /></span>
       <p className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--accent)]"><Leaf className="h-3 w-3" /> Quick update</p>
       <h1 className="mt-2 text-[28px] font-semibold tracking-[-0.02em] text-[var(--foreground)]">We’ll be back soon.</h1>
