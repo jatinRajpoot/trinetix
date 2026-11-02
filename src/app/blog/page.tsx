@@ -1,11 +1,13 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import BlogClient from "./BlogClient";
 import PageHeading from "@/components/PageHeading";
 
-export const metadata: Metadata = {
-  title: "Ideas & advice",
-  description: "Practical notes on websites, web apps and student projects from the TriNetix team.",
-};
+export const metadata: Metadata = pageMetadata(
+  "/blog",
+  "Website Planning & Development Guides",
+  "Practical notes on websites, web apps and student projects from the TriNetix team.",
+);
 
 export default function BlogPage() {
   return (

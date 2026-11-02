@@ -1,6 +1,11 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import LegalLayout from "@/components/LegalLayout";
-export const metadata: Metadata = { title: "Refund Policy", description: "TriNetix refund terms." };
+export const metadata: Metadata = pageMetadata(
+  "/refund",
+  "Refund Policy",
+  "TriNetix refund terms.",
+);
 export default function RefundPage(){
   return (
     <LegalLayout title="Refund Policy" updated="August 7, 2026">

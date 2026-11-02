@@ -1,6 +1,11 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import LegalLayout from "@/components/LegalLayout";
-export const metadata: Metadata = { title: "Shipping Policy", description: "Digital delivery policy for TriNetix." };
+export const metadata: Metadata = pageMetadata(
+  "/shipping",
+  "Shipping Policy",
+  "Digital delivery policy for TriNetix.",
+);
 export default function ShippingPage(){
   return (
     <LegalLayout title="Shipping Policy" updated="August 7, 2026">

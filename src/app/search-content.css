@@ -1,0 +1,42 @@
+.journal-article-body h2 {
+  max-width: 690px;
+  margin-top: 12px;
+  font: 500 clamp(23px, 3vw, 31px)/1.2 var(--font-display);
+  letter-spacing: -.035em;
+  overflow-wrap: anywhere;
+}
+
+.journal-article-body ul,
+.journal-article-body ol {
+  padding-left: 1.5rem;
+  max-width: 690px;
+  color: var(--foreground-secondary);
+  line-height: 1.9;
+}
+
+.journal-article-body ul { list-style: disc; }
+.journal-article-body ol { list-style: decimal; }
+.journal-article-body li + li { margin-top: 8px; }
+.journal-article-body a,
+.article-contents a { text-decoration: underline; text-underline-offset: 4px; }
+.journal-article-body a:hover,
+.article-contents a:hover { color: var(--accent); }
+.article-section { display: grid; gap: 21px; scroll-margin-top: 115px; }
+
+.article-contents { margin-block: 24px; padding: 20px 0; border-block: 1px solid var(--border); }
+.article-contents h2 { margin-bottom: 14px; font-size: 19px; }
+.article-contents ul { display: grid; gap: 12px; font-size: 14px; line-height: 1.6; }
+.pricing-guide-link { margin-top: 20px; }
+
+.planning-guides { padding-block: 65px; }
+.planning-guides h2 { margin-top: 12px; font: 500 clamp(30px, 4vw, 48px)/1.15 var(--font-display); letter-spacing: -.04em; }
+.planning-guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 35px; margin-top: 30px; }
+.planning-guide-grid article { border-top: 1px solid var(--border); padding-top: 24px; }
+.planning-guide-grid h3 { max-width: 500px; font: 500 24px/1.3 var(--font-display); letter-spacing: -.03em; }
+.planning-guide-grid p { margin-block: 15px 20px; max-width: 480px; color: var(--foreground-secondary); font-size: 14px; line-height: 1.8; }
+
+@media (max-width: 767px) {
+  .planning-guides { padding-block: 40px; }
+  .planning-guide-grid { grid-template-columns: 1fr; gap: 30px; }
+  .journal-article-body li { font-size: 14px; }
+}

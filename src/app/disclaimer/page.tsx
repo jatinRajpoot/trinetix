@@ -1,6 +1,11 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import LegalLayout from "@/components/LegalLayout";
-export const metadata: Metadata = { title: "Disclaimer", description: "Disclaimer for TriNetix content and services." };
+export const metadata: Metadata = pageMetadata(
+  "/disclaimer",
+  "Disclaimer",
+  "Disclaimer for TriNetix content and services.",
+);
 export default function DisclaimerPage(){
   return (
     <LegalLayout title="Disclaimer" updated="August 7, 2026">

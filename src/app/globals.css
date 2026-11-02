@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./studio.css";
 @import "./redesign.css";
+@import "./search-content.css";
 
 @layer base {
   :root {

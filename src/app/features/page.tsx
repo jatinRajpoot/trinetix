@@ -1,13 +1,18 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight, Check, Layers3 } from "lucide-react";
 import PageHeading from "@/components/PageHeading";
 import WebsitePreview, { type PreviewKind } from "@/components/WebsitePreview";
 
-export const metadata:Metadata={title:"What we do",description:"Distinctive business websites, custom web apps, Android apps and practical student project support. Explore what TriNetix can build for you."};
+export const metadata: Metadata = pageMetadata(
+  "/features",
+  "Website, Web App & Android Development Services",
+  "Distinctive business websites, custom web apps, Android apps and practical student project support. Explore what TriNetix can build for you.",
+);
 
 const services:{id:string;title:string;price:string;intro:string;points:string[];kind:PreviewKind;theme:string;href:string;action:string}[]=[
-  {id:"business-websites",title:"Your brand. A brilliant website.",price:"Business websites from ₹3,999",intro:"A digital home with personality and purpose. We connect the way your brand looks with what your customers need, so every page has a reason to be there.",points:["Custom design for your business","Responsive across screen sizes","Contact forms, maps & WhatsApp","SEO-ready structure","A walkthrough of your new site","30 days of support after launch"],kind:"healthcare",theme:"lavender",href:"/contact?service=WordPress",action:"Let’s plan your website"},
+  {id:"business-websites",title:"Your brand. A brilliant website.",price:"Business websites from ₹3,999",intro:"A digital home with personality and purpose. We connect the way your brand looks with what your customers need, so every page has a reason to be there.",points:["Custom design for your business","Responsive across screen sizes","Contact forms, maps & WhatsApp","SEO-ready structure","A walkthrough of your new site","30 days of support after launch"],kind:"healthcare",theme:"lavender",href:"/services/business-websites",action:"Explore business website design"},
   {id:"custom-web-apps",title:"Less busywork. More possibility.",price:"Custom web apps from ₹8,000",intro:"Got a process that could work better? We build dashboards, customer portals, booking systems and custom tools around the way your business actually works.",points:["User journeys & interface design","Accounts and permissions","Databases & API connections","Useful third-party integrations","Testing against agreed requirements","Setup notes & handover"],kind:"platform",theme:"peach",href:"/contact?service=CustomProject",action:"Talk through your app idea"},
   {id:"android-apps",title:"Your big idea. In their pocket.",price:"Android apps from ₹15,000",intro:"An app that earns its place on someone’s phone. We plan the experience, build the core features and help prepare your Android app for release.",points:["Product planning & screen design","Native Android development","Backend & API integration","Offline features where needed","Notification options","Testing & release preparation"],kind:"android",theme:"lime",href:"/contact?service=AndroidApp",action:"Let’s talk mobile"},
 ];

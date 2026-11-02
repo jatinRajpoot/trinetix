@@ -19,9 +19,12 @@ npm run dev        # http://localhost:3000
 
 ```
 npm run build      # emits static site to out/
+npm run check:seo  # verifies exported metadata, sitemap, article data and links
 ```
 
 Deploy `out/` to any static host or CDN (Netlify, Vercel, Cloudflare Pages, S3, GitHub Pages). Optionally, `docker compose up --build` serves it via nginx on port 3000.
+
+See [organic search maintenance](docs/organic-search.md) for content conventions and Search Console steps after deployment.
 
 ## Project structure
 

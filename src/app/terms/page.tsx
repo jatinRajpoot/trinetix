@@ -1,6 +1,11 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import LegalLayout from "@/components/LegalLayout";
-export const metadata: Metadata = { title: "Terms of Service", description: "Terms governing use of TriNetix services." };
+export const metadata: Metadata = pageMetadata(
+  "/terms",
+  "Terms of Service",
+  "Terms governing use of TriNetix services.",
+);
 export default function TermsPage(){
   return (
     <LegalLayout title="Terms of Service" updated="August 7, 2026">

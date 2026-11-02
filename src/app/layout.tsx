@@ -3,6 +3,7 @@ import { Geist, Syne } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SiteMotion from "@/components/SiteMotion";
+import { SITE_URL as siteUrl, SITE_NAME as siteName, SITE_TITLE, SITE_DESCRIPTION as defaultDesc, jsonLd } from "@/lib/seo";
 import "./globals.css";
 
 const geist = Geist({
@@ -15,11 +16,7 @@ const geist = Geist({
 
 const syne = Syne({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-space", display: "swap" });
 
-const siteUrl = "https://trinetix.in";
-const siteName = "TriNetix";
-const defaultTitle = "TriNetix — Websites with a point of view.";
-const defaultDesc =
-  "An independent digital studio in India creating distinctive websites, custom web apps and Android experiences. Tell us about your next idea on WhatsApp.";
+const defaultTitle = `${SITE_TITLE} | ${siteName}`;
 
 export const viewport: Viewport = {
   themeColor: "#ec0038",
@@ -38,8 +35,6 @@ export const metadata: Metadata = {
   creator: siteName,
   publisher: siteName,
   category: "Technology",
-  keywords: ["TriNetix","Premium Websites","WordPress Development","Android Apps","Student Projects","Next.js Studio","Simple Websites India"],
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -54,13 +49,13 @@ export const metadata: Metadata = {
     description: defaultDesc,
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
-  verification: {},
 };
 
 const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "TriNetix",
+  "@id": `${siteUrl}/#organization`,
+  name: siteName,
   alternateName: "TriNetix Digital Studio",
   url: siteUrl,
   description: defaultDesc,
@@ -77,7 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${geist.variable} ${syne.variable} scroll-smooth`}>
       <head>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(orgSchema) }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
       </head>
       <body className="min-h-screen bg-[var(--background)] text-[var(--foreground)] flex flex-col antialiased selection:bg-[var(--accent)] selection:text-white">
