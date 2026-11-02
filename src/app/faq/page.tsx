@@ -1,13 +1,15 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import FaqClient from "./FaqClient";
 import { ArrowRight } from "lucide-react";
 import PageHeading from "@/components/PageHeading";
 
-export const metadata: Metadata = {
-  title: "Frequently asked questions",
-  description: "Answers about TriNetix project timelines, pricing, website ownership, support and student projects.",
-};
+export const metadata: Metadata = pageMetadata(
+  "/faq",
+  "Frequently asked questions",
+  "Answers about TriNetix project timelines, pricing, website ownership, support and student projects.",
+);
 
 const faqs = [
   { q: "What does a business website cost?", a: "Business websites start at ₹3,999. We’ll confirm the pages, features, timeline and final price with you before any work begins." },

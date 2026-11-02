@@ -1,6 +1,11 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import LegalLayout from "@/components/LegalLayout";
-export const metadata: Metadata = { title: "Cookie Policy", description: "How TriNetix uses cookies." };
+export const metadata: Metadata = pageMetadata(
+  "/cookies",
+  "Cookie Policy",
+  "How TriNetix uses cookies.",
+);
 export default function CookiePage(){
   return (
     <LegalLayout title="Cookie Policy" updated="August 7, 2026">

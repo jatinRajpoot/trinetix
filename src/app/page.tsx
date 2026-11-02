@@ -1,3 +1,4 @@
+import { pageMetadata, SITE_TITLE, SITE_DESCRIPTION } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Plus, Star } from "lucide-react";
 import SelectedWork from "@/components/SelectedWork";
@@ -5,8 +6,10 @@ import HomeMotion from "@/components/HomeMotion";
 import HeroTypewriter from "@/components/HeroTypewriter";
 import { TESTIMONIALS } from "@/data/testimonials";
 
+export const metadata = pageMetadata("/", SITE_TITLE, SITE_DESCRIPTION);
+
 const services = [
-  { title: "Web design & development", description: "A website that feels like your business at its best. Thoughtful design, fast development, and a clear path from first visit to first conversation.", tags: ["Business websites", "WordPress", "Next.js", "E-commerce"], price: "From ₹3,999", href: "/features#business-websites" },
+  { title: "Web design & development", description: "A website that feels like your business at its best. Thoughtful design, fast development, and a clear path from first visit to first conversation.", tags: ["Business websites", "WordPress", "Next.js", "E-commerce"], price: "From ₹3,999", href: "/services/business-websites" },
   { title: "Custom web applications", description: "Booking tools, customer portals, dashboards, and the idea that doesn’t quite fit a template. We build around the way you actually work.", tags: ["Dashboards", "Customer portals", "API integrations"], price: "From ₹8,000", href: "/features#custom-web-apps" },
   { title: "Android experiences", description: "Put your idea in people’s hands. We take care of the screens, the features, and the details that make a mobile experience feel effortless.", tags: ["Product planning", "Native Android", "Release support"], price: "From ₹15,000", href: "/features#android-apps" },
 ];
@@ -24,7 +27,7 @@ export default function HomePage() {
         <div className="hero-lower">
           <a href="#clients" className="hero-explore"><span className="round-arrow"><ArrowDown size={23} strokeWidth={1.5} /></span> Scroll to discover</a>
           <div className="hero-intro">
-            <p>We’re TriNetix. A small digital studio building distinctive websites and useful apps for businesses ready for what’s next.</p>
+            <p>We’re TriNetix, a website design and development studio in India. We build business websites from ₹3,999, custom web apps and Android apps, with a clear quote and support after launch.</p>
           </div>
         </div>
         <div className="hero-meta"><span>Based in India. Building everywhere.</span><a href="mailto:Support@trinetix.in">Say hello: Support@trinetix.in <ArrowUpRight size={15} /></a></div>
@@ -32,6 +35,13 @@ export default function HomePage() {
       <section className="awake-statement panel" aria-labelledby="statement-title"><span className="statement-note">Good people. Thoughtful work.</span><h2 id="statement-title">Your business has<br />something to say.<br />We make sure the<br />world feels it.</h2><div className="statement-bottom"><span className="statement-flower" aria-hidden="true">✳</span><p>Design with a point of view. Development with a purpose. One close-knit team, from the first conversation to the final little detail.</p><Link href="/about" className="circle-link" aria-label="Meet the studio"><ArrowUpRight size={30} strokeWidth={1.3} /></Link></div></section>
       <SelectedWork />
       <section id="services" className="awake-services panel" aria-labelledby="services-title"><div className="awake-section-top"><p>What we do</p></div><h2 id="services-title" className="mega-heading">Big on ideas.<br />Better at making.</h2><div className="awake-service-list">{services.map((service,index)=><details key={service.title} className="awake-service" open={index===0}><summary><h3>{service.title}</h3><Plus size={28} strokeWidth={1.4} /></summary><div className="awake-service-body"><p>{service.description}</p><div><div className="awake-tags">{service.tags.map(tag=><span key={tag}>{tag}</span>)}</div><div className="awake-service-action"><span>{service.price}</span><Link href={service.href}>Explore service <ArrowUpRight size={17} /></Link></div></div></div></details>)}</div><div className="service-footnote"><p>Something for college? We help students build, understand, and present their projects.</p><Link href="/pricing#students">Explore student support <ArrowUpRight size={16}/></Link></div></section>
+      <section className="site-container planning-guides" aria-labelledby="planning-title">
+        <div><p className="section-label">Before you build</p><h2 id="planning-title">Plan your business website.</h2></div>
+        <div className="planning-guide-grid">
+          <article><h3><Link href="/blog/business-website-cost-india">What does a business website cost in India?</Link></h3><p>Understand our starting prices, the work included and the recurring costs to allow for.</p><Link href="/blog/business-website-cost-india" className="text-link">Read the budget guide <ArrowUpRight size={17}/></Link></article>
+          <article><h3><Link href="/blog/wordpress-conversion-tips">Help website visitors become enquiries.</Link></h3><p>Make your services clearer, your proof more useful and your contact route easier to follow.</p><Link href="/blog/wordpress-conversion-tips" className="text-link">Read the website advice <ArrowUpRight size={17}/></Link></article>
+        </div>
+      </section>
       <section id="kind-words" className="awake-notes" aria-labelledby="notes-title"><div className="awake-section-top"><Link href="/contact">Let’s work together <ArrowUpRight size={17}/></Link></div><h2 id="notes-title" className="mega-heading">Good work.<br />Good company.</h2><div className="awake-quote-grid">{TESTIMONIALS.filter(note=>note.type==="Client").map(note=><article key={note.id} className="awake-quote"><div className="quote-stars" aria-label={`${note.rating} out of 5 stars`}>{Array.from({length:note.rating},(_,i)=><Star key={i} size={15} fill="currentColor" aria-hidden="true"/>)}</div><blockquote>“{note.comment}”</blockquote><div className="quote-credit"><span aria-hidden="true">{note.name.split(" ").map(n=>n[0]).join("")}</span><p>{note.name}<small>{note.role}</small></p></div></article>)}</div></section>
       <section className="awake-process panel" aria-labelledby="process-title"><div><h2 id="process-title">From “what if”<br />to out in<br />the world.</h2><Link className="text-link" href="/contact">Start the conversation <ArrowUpRight size={18}/></Link></div><ol>{[{title:"Tell us the idea",body:"A rough sketch, an ambitious plan, or a website that needs a rethink. We listen and ask the right questions."},{title:"Make it together",body:"We agree on the scope, price, and timeline. You see the work take shape and give feedback along the way."},{title:"Launch with confidence",body:"We test, polish, and hand it over properly. Your website is yours, and we’re here for support after launch."}].map((step,i)=><li key={step.title}><span>0{i+1}</span><div><h3>{step.title}</h3><p>{step.body}</p></div></li>)}</ol></section>
     </div>

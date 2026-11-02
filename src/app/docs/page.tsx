@@ -1,8 +1,13 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeading from "@/components/PageHeading";
 
-export const metadata: Metadata = { title: "Documentation", description: "Practical notes on setup, content updates and project handover from TriNetix." };
+export const metadata: Metadata = pageMetadata(
+  "/docs",
+  "Documentation",
+  "Practical notes on setup, content updates and project handover from TriNetix.",
+);
 
 const notes = [
   { id: "getting-started", title: "Your project, properly handed over.", body: "Every delivery includes a guide to your project: the files, accounts, features, and details you need to take ownership. We walk through it together so you know where everything lives." },

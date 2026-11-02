@@ -1,7 +1,12 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import LegalLayout from "@/components/LegalLayout";
 
-export const metadata: Metadata = { title: "Privacy Policy", description: "How TriNetix collects and uses information." };
+export const metadata: Metadata = pageMetadata(
+  "/privacy",
+  "Privacy Policy",
+  "How TriNetix collects and uses information.",
+);
 
 export default function PrivacyPage() {
   return (
